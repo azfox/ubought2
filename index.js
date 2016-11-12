@@ -7,7 +7,7 @@ var BotKit = require('botkit');
 
 
 var controller = BotKit.facebookbot({
-    debug: true,
+    debug: false,
     access_token: token,
     verify_token: verify,
 });
