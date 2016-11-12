@@ -1,24 +1,10 @@
-var express = require('express')
-var bodyParser = require('body-parser')
-var request = require('request')
+var token = "EAACH17k9j0oBALuERxI0mphZCXdkJ8mM6VP1mwCws8IdkpcltA09FPYob1bdWxyND9Y4X56uoNRJ8A4ehoS68jP5ReOlwYG50aeMZAYUkAHWpOXbowZCbK8ueRZBmS3C1l6vQfnAlnu03lIKWqZCFs1bOIAvoKnglZB5DPMMW5AQZDZD"
+var verify = "am_i_verified"
 var os = require('os');
-var app = express()
 var BotKit = require('botkit');
 
 
-var fs = require('fs');
 
-
-var Train = require('./src/train');
-var Brain = require('./src/brain');
-var Ears = require('./src/ears');
-var builtinPhrases = require('./builtins');
-
-
-
-
-var token = "EAACH17k9j0oBALuERxI0mphZCXdkJ8mM6VP1mwCws8IdkpcltA09FPYob1bdWxyND9Y4X56uoNRJ8A4ehoS68jP5ReOlwYG50aeMZAYUkAHWpOXbowZCbK8ueRZBmS3C1l6vQfnAlnu03lIKWqZCFs1bOIAvoKnglZB5DPMMW5AQZDZD"
-var verify = "am_i_verified"
 
 var controller = BotKit.facebookbot({
     debug: true,
@@ -29,69 +15,233 @@ var controller = BotKit.facebookbot({
 var bot = controller.spawn({
 });
 
-controller.setupWebserver(process.env.port || 3000, function(err, webserver) {
+controller.setupWebserver(process.env.port || 5000, function(err, webserver) {
     controller.createWebhookEndpoints(webserver, bot, function() {
         console.log('ONLINE!');
     });
 });
 
 //bit that can listen
-var ubought = {
-  Brain: new Brain(),
-  //Ears: new Ears(process.env.SLACK_TOKEN)
-  Ears: new Ears(bot)
-};
+controller.hears(['hello', 'hi'], 'message_received', function(bot, message) {
 
 
-var customPhrasesText;
-var customPhrases;
-try {
-  customPhrasesText = fs.readFileSync(__dirname + '/custom-phrases.json').toString();
-} catch (err) {
-  throw new Error('Uh oh, ubought could not find the ' +
-    'custom-phrases.json file, did you move it?');
-}
-try {
-  customPhrases = JSON.parse(customPhrasesText);
-} catch (err) {
-  throw new Error('Uh oh, custom-phrases.json was ' +
-    'not valid JSON! Fix it, please? :)');
-}
+    controller.storage.users.get(message.user, function(err, user) {
+        if (user && user.name) {
+            bot.reply(message, 'Hello ' + user.name + '!!');
+        } else {
+            bot.reply(message, 'Hello.');
+        }
+    });
+});
 
-console.log('ubought is learning...');
-ubought.Teach = ubought.Brain.teach.bind(ubought.Brain);
-eachKey(customPhrases, ubought.Teach);
-eachKey(builtinPhrases, ubought.Teach);
-ubought.Brain.think();
-console.log('ubought finished learning, time to listen...');
-ubought.Ears
-  .listen()
-  .hear('TRAINING TIME!!!', function(speech, message) {
-    console.log('Delegating to on-the-fly training module...');
-    Train(ubought.Brain, speech, message);
-  })
-  .hear('.*', function(speech, message) {
-    var interpretation = ubought.Brain.interpret(message.text);
-    console.log('ubought heard: ' + message.text);
-    console.log('ubought interpretation: ', interpretation);
-    if (interpretation.guess) {
-      console.log('Invoking skill: ' + interpretation.guess);
-      ubought.Brain.invoke(interpretation.guess, interpretation, speech, message);
-    } else {
-      speech.reply(message, 'Hmm... I don\'t have a response what you said... I\'ll save it and try to learn about it later.');
-      // speech.reply(message, '```\n' + JSON.stringify(interpretation) + '\n```');
 
-      // append.write [message.text] ---> to a file
-      fs.appendFile('phrase-errors.txt', '\nChannel: ' + message.channel + ' User:'+ message.user + ' - ' + message.text, function (err) {
-        console.log('\n\tBrain Err: Appending phrase for review\n\t\t' + message.text + '\n');
+controller.hears(['structured'], 'message_received', function(bot, message) {
+
+    bot.reply(message, {
+        attachment: {
+            'type': 'template',
+            'payload': {
+                'template_type': 'generic',
+                'elements': [
+                    {
+                        'title': 'Classic White T-Shirt',
+                        'image_url': 'http://petersapparel.parseapp.com/img/item100-thumb.png',
+                        'subtitle': 'Soft white cotton t-shirt is back in style',
+                        'buttons': [
+                            {
+                                'type': 'web_url',
+                                'url': 'https://petersapparel.parseapp.com/view_item?item_id=100',
+                                'title': 'View Item'
+                            },
+                            {
+                                'type': 'web_url',
+                                'url': 'https://petersapparel.parseapp.com/buy_item?item_id=100',
+                                'title': 'Buy Item'
+                            },
+                            {
+                                'type': 'postback',
+                                'title': 'Bookmark Item',
+                                'payload': 'White T-Shirt'
+                            }
+                        ]
+                    },
+                    {
+                        'title': 'Classic Grey T-Shirt',
+                        'image_url': 'http://petersapparel.parseapp.com/img/item101-thumb.png',
+                        'subtitle': 'Soft gray cotton t-shirt is back in style',
+                        'buttons': [
+                            {
+                                'type': 'web_url',
+                                'url': 'https://petersapparel.parseapp.com/view_item?item_id=101',
+                                'title': 'View Item'
+                            },
+                            {
+                                'type': 'web_url',
+                                'url': 'https://petersapparel.parseapp.com/buy_item?item_id=101',
+                                'title': 'Buy Item'
+                            },
+                            {
+                                'type': 'postback',
+                                'title': 'Bookmark Item',
+                                'payload': 'Grey T-Shirt'
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    });
+});
+
+controller.on('facebook_postback', function(bot, message) {
+
+    bot.reply(message, 'Great Choice!!!! (' + message.payload + ')');
+
+});
+
+controller.hears(['call me (.*)', 'my name is (.*)'], 'message_received', function(bot, message) {
+    var name = message.match[1];
+    controller.storage.users.get(message.user, function(err, user) {
+        if (!user) {
+            user = {
+                id: message.user,
+            };
+        }
+        user.name = name;
+        controller.storage.users.save(user, function(err, id) {
+            bot.reply(message, 'Got it. I will call you ' + user.name + ' from now on.');
         });
+    });
+});
+
+controller.hears(['what is my name', 'who am i'], 'message_received', function(bot, message) {
+    controller.storage.users.get(message.user, function(err, user) {
+        if (user && user.name) {
+            bot.reply(message, 'Your name is ' + user.name);
+        } else {
+            bot.startConversation(message, function(err, convo) {
+                if (!err) {
+                    convo.say('I do not know your name yet!');
+                    convo.ask('What should I call you?', function(response, convo) {
+                        convo.ask('You want me to call you `' + response.text + '`?', [
+                            {
+                                pattern: 'yes',
+                                callback: function(response, convo) {
+                                    // since no further messages are queued after this,
+                                    // the conversation will end naturally with status == 'completed'
+                                    convo.next();
+                                }
+                            },
+                            {
+                                pattern: 'no',
+                                callback: function(response, convo) {
+                                    // stop the conversation. this will cause it to end with status == 'stopped'
+                                    convo.stop();
+                                }
+                            },
+                            {
+                                default: true,
+                                callback: function(response, convo) {
+                                    convo.repeat();
+                                    convo.next();
+                                }
+                            }
+                        ]);
+
+                        convo.next();
+
+                    }, {'key': 'nickname'}); // store the results in a field called nickname
+
+                    convo.on('end', function(convo) {
+                        if (convo.status == 'completed') {
+                            bot.reply(message, 'OK! I will update my dossier...');
+
+                            controller.storage.users.get(message.user, function(err, user) {
+                                if (!user) {
+                                    user = {
+                                        id: message.user,
+                                    };
+                                }
+                                user.name = convo.extractResponse('nickname');
+                                controller.storage.users.save(user, function(err, id) {
+                                    bot.reply(message, 'Got it. I will call you ' + user.name + ' from now on.');
+                                });
+                            });
+
+
+
+                        } else {
+                            // this happens if the conversation ended prematurely for some reason
+                            bot.reply(message, 'OK, nevermind!');
+                        }
+                    });
+                }
+            });
+        }
+    });
+});
+
+controller.hears(['shutdown'], 'message_received', function(bot, message) {
+
+    bot.startConversation(message, function(err, convo) {
+
+        convo.ask('Are you sure you want me to shutdown?', [
+            {
+                pattern: bot.utterances.yes,
+                callback: function(response, convo) {
+                    convo.say('Bye!');
+                    convo.next();
+                    setTimeout(function() {
+                        process.exit();
+                    }, 3000);
+                }
+            },
+        {
+            pattern: bot.utterances.no,
+            default: true,
+            callback: function(response, convo) {
+                convo.say('*Phew!*');
+                convo.next();
+            }
+        }
+        ]);
+    });
+});
+
+
+controller.hears(['uptime', 'identify yourself', 'who are you', 'what is your name'], 'message_received',
+    function(bot, message) {
+
+        var hostname = os.hostname();
+        var uptime = formatUptime(process.uptime());
+
+        bot.reply(message,
+            ':robot_face: I am a bot named <@' + bot.identity.name +
+             '>. I have been running for ' + uptime + ' on ' + hostname + '.');
+    });
+
+
+
+controller.on('message_received', function(bot, message) {
+    bot.reply(message, 'Try: `what is my name` or `structured` or `call me captain`');
+    return false;
+});
+
+
+function formatUptime(uptime) {
+    var unit = 'second';
+    if (uptime > 60) {
+        uptime = uptime / 60;
+        unit = 'minute';
     }
-  });
+    if (uptime > 60) {
+        uptime = uptime / 60;
+        unit = 'hour';
+    }
+    if (uptime != 1) {
+        unit = unit + 's';
+    }
 
-
-
-function eachKey(object, callback) {
-  Object.keys(object).forEach(function(key) {
-    callback(key, object[key]);
-  });
+    uptime = uptime + ' ' + unit;
+    return uptime;
 }
