@@ -1,6 +1,8 @@
 /* eslint-disable brace-style */
 /* eslint-disable camelcase */
+console.log("about to try monkii")
 var db = require('monkii')
+console.log("did monkii? work?")
 /**
  * botkit-storage-mongo - MongoDB driver for Botkit
  *
