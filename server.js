@@ -3,7 +3,7 @@ var express = require('express')     // framework d'appli
 var app = express()
 var bodyParser = require('body-parser') // BodyParser pour POST
 var http = require('http').Server(app)      // préparer le serveur web
-var dotenv = require('dotenv')
+var dotenv = require('dotenv').config()
 var path = require('path')
 
 // configuration ===========================================
@@ -12,7 +12,7 @@ var path = require('path')
 // either from .env files (development),
 // heroku environment in production, etc...
 console.log('About to Start:')
-dotenv.load()
+//dotenv.load()
 console.log('Finished dotenv..moving to express')
 
 app.use(express.static(path.join(__dirname, '/public')))
