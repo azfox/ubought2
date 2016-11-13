@@ -87,7 +87,7 @@ controller.hears(['TRAINING TIME'], 'message_received', function (bot, message) 
 
 // user says anything else
 controller.hears('(.*)', 'message_received', function (bot, message) {
-  bot.reply(message, 'you said ' + message.match[1] + 'from lat:' message.lat + ', long:' + message.lng)
+  bot.reply(message, 'you said ' + message.match[1] + ' attachments: ' + message.attachments)
   var interpretation = myBrain.interpret(message.text);
   console.log('uBought heard: ' + message.text);
   console.log('uBought interpretation: ', interpretation);
