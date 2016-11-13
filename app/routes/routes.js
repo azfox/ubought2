@@ -28,7 +28,7 @@ module.exports = function (app) {
     //var geo_location = geoip.lookup(getRemoteIP(req));
     //console.log('geolocation: ' + geo_location)
     var s = req.ip
-    s = s.replace(/^::ffff:/, "");
+    s = s.replace(/^::ffff:/, "").toString();
     console.log(s)
     console.log('try 2 on Ip ' + geoip.lookup(s))
     res.send('ok')
