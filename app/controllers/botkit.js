@@ -47,7 +47,7 @@ console.log('botkit')
 var customPhrasesText;
 var customPhrases;
 try {
-  customPhrasesText = fs.readFileSync('../../custom-phrases.json').toString();
+  customPhrasesText = fs.readFileSync(__dirname + '../../custom-phrases.json').toString();
 } catch (err) {
   throw new Error('Uh oh, uBought could not find the ' +
     'custom-phrases.json file, did you move it?');
