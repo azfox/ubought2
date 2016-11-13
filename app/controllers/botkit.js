@@ -3,8 +3,10 @@
 // CONFIG===============================================
 /* Uses the slack button feature to offer a real time bot to multiple teams */
 var Botkit = require('botkit')
-var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/botkit-demo'
+var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/botkit-demo' || 'mongodb://heroku_750s8q8l:l9mfrebhqqet9j90moo62scac6@ds051170.mlab.com:51170/heroku_750s8q8l'
+console.log("is is the mongoUri?")
 var db = require('../../config/db')({mongoUri: mongoUri})
+console.log("is it after the db var?")
 var request = require('request')
 
 var controller = Botkit.facebookbot({

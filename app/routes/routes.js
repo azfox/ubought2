@@ -2,9 +2,12 @@
 /* eslint-disable camelcase */
 var facebook_handler = require('../controllers/botkit').handler
 
+console.log("made it through facebook_handler")
+
 module.exports = function (app) {
   // public pages=============================================
   // root
+  
   app.get('/', function (req, res) {
     res.render('home')
   })
