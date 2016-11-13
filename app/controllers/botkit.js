@@ -80,14 +80,14 @@ controller.hears(['hello'], 'message_received', function (bot, message) {
 
 controller.hears(['TRAINING TIME'], 'message_received', function (bot, message) {
   console.log('Delegating to on-the-fly training module...');
-  Train(Bottie.Brain, speech, message);
+  Train(myBrain, speech, message);
 })
 
 
 
 // user says anything else
 controller.hears('(.*)', 'message_received', function (bot, message) {
-  bot.reply(message, 'you said ' + message.match[1])
+  bot.reply(message, 'you said ' + message.match[1] + 'from lat:' message.lat + ', long:' + message.lng)
   var interpretation = myBrain.interpret(message.text);
   console.log('uBought heard: ' + message.text);
   console.log('uBought interpretation: ', interpretation);
@@ -125,8 +125,11 @@ var handler = function (obj) {
             timestamp: facebook_message.timestamp,
             seq: facebook_message.message.seq,
             mid: facebook_message.message.mid,
-            attachments: facebook_message.message.attachments
+            attachments: facebook_message.message.attachments,
+            lat: facebook_message.message.attachments[0].payload.coordinates.lat,
+            lng: facebook_message.message.attachments[0].payload.coordinates.long
           }
+
 
           // save if user comes from m.me adress or Facebook search
           create_user_if_new(facebook_message.sender.id, facebook_message.timestamp)
