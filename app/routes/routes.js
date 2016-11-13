@@ -27,8 +27,18 @@ module.exports = function (app) {
     facebook_handler(req.body, req.ip)
     var geo_location = geoip.lookup(getRemoteIP(req));
     console.log('geolocation: ' + geo_location)
+    console.log('try 2 on Ip ' + geoip.lookup(req.ip))
     res.send('ok')
   })
+}
+
+var getRemoteIP = function(request) {
+  var ip = request.headers['x-forwarded-for'] ||
+           request.connection.remoteAddress ||
+           request.socket.remoteAddress ||
+           request.connection.socket.remoteAddress
+  }
+  return ip;
 }
 /* eslint-disable brace-style */
 /* eslint-disable camelcase */
