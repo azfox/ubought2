@@ -16,7 +16,7 @@ console.log('About to Start:')
 console.log('Finished dotenv..moving to express')
 
 app.use(express.static(path.join(__dirname, '/public')))
-
+console.log('ihate errors')
 // parsing
 app.use(bodyParser.json()) // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })) // for parsing url encoded
