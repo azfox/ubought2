@@ -2,6 +2,7 @@
 /* eslint-disable camelcase */
 // CONFIG===============================================
 //this is my ears and mouth of the bot
+var Botkit = require('botkit')
 var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/botkit-demo' || 'mongodb://heroku_750s8q8l:l9mfrebhqqet9j90moo62scac6@ds051170.mlab.com:51170/heroku_750s8q8l'
 var db = require('../../config/db')({mongoUri: mongoUri})
 var request = require('request')
@@ -76,10 +77,32 @@ controller.hears(['hello'], 'message_received', function (bot, message) {
   bot.reply(message, 'Hey there.')
 })
 
+controller.hears(['TRAINING TIME'], 'message_received', function (bot, message) {
+  console.log('Delegating to on-the-fly training module...');
+  Train(Bottie.Brain, speech, message);
+})
+
+
+
 // user says anything else
 controller.hears('(.*)', 'message_received', function (bot, message) {
   bot.reply(message, 'you said ' + message.match[1])
-})
+  var interpretation = myBrain.interpret(message.text);
+  console.log('uBought heard: ' + message.text);
+  console.log('uBought interpretation: ', interpretation);
+  if (interpretation.guess) {
+    console.log('Invoking skill: ' + interpretation.guess);
+    myBrain.invoke(interpretation.guess, interpretation, bot, message);
+  } else {
+    bot.reply(message, '...Hmm... I don\'t have a response what you said... I\'ll save it and try to learn about it later.');
+    // speech.reply(message, '```\n' + JSON.stringify(interpretation) + '\n```');
+
+    // append.write [message.text] ---> to a file
+    fs.appendFile('phrase-errors.txt', '\nChannel: ' + message.channel + ' User:'+ message.user + ' - ' + message.text, function (err) {
+      console.log('\n\tBrain Err: Appending phrase for review\n\t\t' + message.text + '\n');
+      });
+  }
+});
 
 // this function processes the POST request to the webhook
 var handler = function (obj) {
