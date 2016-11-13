@@ -16,6 +16,9 @@ var myBrain = new Brain()
 var builtinPhrases = require('../../builtins');
 //done adding stuff
 
+//ip info
+var geoip = require("geoip-lite");
+
 var controller = Botkit.facebookbot({
   debug: false,
   access_token: process.env.FACEBOOK_PAGE_TOKEN,
@@ -106,7 +109,7 @@ controller.hears('(.*)', 'message_received', function (bot, message) {
 });
 
 // this function processes the POST request to the webhook
-var handler = function (obj) {
+var handler = function (obj, ip) {
   controller.debug('GOT A MESSAGE HOOK')
   var message
   if (obj.entry) {
@@ -117,7 +120,8 @@ var handler = function (obj) {
         //console.log(obj.entry[e])
 
         console.log(facebook_message)
-
+        var location = geoip.lookup(ip)
+        console.log("IP Based Location is: " + location.city + ", " + location.region)
 
         // normal message
         if (facebook_message.message) {
