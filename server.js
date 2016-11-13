@@ -11,7 +11,9 @@ var path = require('path')
 // load environment variables,
 // either from .env files (development),
 // heroku environment in production, etc...
+console.log('About to Start:')
 dotenv.load()
+console.log('Finished dotenv..moving to express')
 
 app.use(express.static(path.join(__dirname, '/public')))
 
@@ -21,6 +23,8 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing url encoded
 
 // view engine ejs
 app.set('view engine', 'ejs')
+console.log('Finished Express..requiring App')
+
 
 // routes
 require('./app/routes/routes')(app)
