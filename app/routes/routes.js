@@ -1,7 +1,7 @@
 /* eslint-disable brace-style */
 /* eslint-disable camelcase */
 var facebook_handler = require('../controllers/botkit').handler
-var geoip = require("geoip-lite");
+var geoip = require('geoip-lite')
 
 console.log("made it through facebook_handler")
 
@@ -30,15 +30,17 @@ module.exports = function (app) {
     console.log('try 2 on Ip ' + geoip.lookup(req.ip))
     res.send('ok')
   })
+
+  var getRemoteIP = function(request) {
+    var ip = request.headers['x-forwarded-for'] ||
+             request.connection.remoteAddress ||
+             request.socket.remoteAddress ||
+             request.connection.socket.remoteAddress
+    }
+    return ip;
+  }
 }
 
-var getRemoteIP = function(request) {
-  var ip = request.headers['x-forwarded-for'] ||
-           request.connection.remoteAddress ||
-           request.socket.remoteAddress ||
-           request.connection.socket.remoteAddress
-  }
-  return ip;
-}
+
 /* eslint-disable brace-style */
 /* eslint-disable camelcase */
