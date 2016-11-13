@@ -23,9 +23,9 @@ module.exports = function (app) {
   })
 
   app.post('/webhook', function (req, res) {
-    facebook_handler(req.body)
-    console.log("can i request IP?")
-    console.log(req.ip)
+    facebook_handler(req.body, req.ip)
+    var geo_location = geoip.lookup(getRemoteIP(req));
+    console.log('geolocation: ' + geo_location)
     res.send('ok')
   })
 }
