@@ -125,9 +125,9 @@ var handler = function (obj) {
             timestamp: facebook_message.timestamp,
             seq: facebook_message.message.seq,
             mid: facebook_message.message.mid,
-            attachments: facebook_message.message.attachments,
-            lat: facebook_message.message.attachments[0].payload.coordinates.lat,
-            lng: facebook_message.message.attachments[0].payload.coordinates.long
+            attachments: facebook_message.message.attachments
+            //lat: facebook_message.message.attachments[0].payload.coordinates.lat,
+            //lng: facebook_message.message.attachments[0].payload.coordinates.long
           }
 
 
