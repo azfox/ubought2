@@ -1,6 +1,7 @@
 /* eslint-disable brace-style */
 /* eslint-disable camelcase */
 var facebook_handler = require('../controllers/botkit').handler
+var geoip = require("geoip-lite");
 
 console.log("made it through facebook_handler")
 
