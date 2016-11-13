@@ -43,8 +43,8 @@ Brain.prototype.invoke = function(skill, info, bot, message) {
   var skillCode;
 
   // check the sentiment
-  "use_strict"
-  let senti = sentiment(message.text);
+  //"use_strict"
+  var senti = sentiment(message.text);
   if (senti.score != 0) {
     console.log('\n\tSentiment value: ');
     console.dir(senti);
