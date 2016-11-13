@@ -28,7 +28,7 @@ console.log('Finished Express..requiring App')
 
 // routes
 require('./app/routes/routes')(app)
-console.log('ihate errors 2')
+
 
 // port for Heroku
 app.set('port', (process.env.PORT || 5000))

@@ -113,8 +113,8 @@ var handler = function (obj) {
     for (var e = 0; e < obj.entry.length; e++) {
       for (var m = 0; m < obj.entry[e].messaging.length; m++) {
         var facebook_message = obj.entry[e].messaging[m]
-        console.log("Entire message -->")
-        console.log(obj.entry[e])
+        //console.log("Entire message -->")
+        //console.log(obj.entry[e])
 
         console.log(facebook_message)
 

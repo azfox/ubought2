@@ -7,7 +7,7 @@ console.log("made it through facebook_handler")
 module.exports = function (app) {
   // public pages=============================================
   // root
-  
+
   app.get('/', function (req, res) {
     res.render('home')
   })
@@ -24,7 +24,8 @@ module.exports = function (app) {
 
   app.post('/webhook', function (req, res) {
     facebook_handler(req.body)
-
+    console.log("can i request IP?")
+    console.log(req.ip)
     res.send('ok')
   })
 }
