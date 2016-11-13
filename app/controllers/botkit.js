@@ -1,13 +1,19 @@
 /* eslint-disable brace-style */
 /* eslint-disable camelcase */
 // CONFIG===============================================
-/* Uses the slack button feature to offer a real time bot to multiple teams */
-var Botkit = require('botkit')
+//this is my ears and mouth of the bot
 var mongoUri = process.env.MONGODB_URI || 'mongodb://localhost/botkit-demo' || 'mongodb://heroku_750s8q8l:l9mfrebhqqet9j90moo62scac6@ds051170.mlab.com:51170/heroku_750s8q8l'
-console.log("is is the mongoUri?")
 var db = require('../../config/db')({mongoUri: mongoUri})
-console.log("is it after the db var?")
 var request = require('request')
+
+//stuff added by Aaron to see if he could use nlp
+var fs = require('fs');
+
+var Train = require('./train');
+var Brain = require('./brain');
+var myBrain = new Brain()
+var builtinPhrases = require('../../builtins');
+//done adding stuff
 
 var controller = Botkit.facebookbot({
   debug: false,
@@ -35,6 +41,30 @@ request.post('https://graph.facebook.com/me/subscribed_apps?access_token=' + pro
 )
 
 console.log('botkit')
+
+//learn some things then listen
+var customPhrasesText;
+var customPhrases;
+try {
+  customPhrasesText = fs.readFileSync('../../custom-phrases.json').toString();
+} catch (err) {
+  throw new Error('Uh oh, uBought could not find the ' +
+    'custom-phrases.json file, did you move it?');
+}
+try {
+  customPhrases = JSON.parse(customPhrasesText);
+} catch (err) {
+  throw new Error('Uh oh, custom-phrases.json was ' +
+    'not valid JSON! Fix it, please? :)');
+}
+
+console.log('uBought is learning...');
+Teach = myBrain.teach.bind(myBrain);
+eachKey(customPhrases, Teach);
+eachKey(builtinPhrases, Teach);
+myBrain.think();
+console.log('uBought finished learning, time to listen...');
+
 
 // this is triggered when a user clicks the send-to-messenger plugin
 controller.on('facebook_optin', function (bot, message) {
@@ -144,6 +174,13 @@ var create_user_if_new = function (id, ts) {
       controller.storage.users.save({id: id, created_at: ts})
     }
   })
+}
+
+
+function eachKey(object, callback) {
+  Object.keys(object).forEach(function(key) {
+    callback(key, object[key]);
+  });
 }
 
 exports.handler = handler
