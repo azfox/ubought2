@@ -22,6 +22,7 @@
     "monkii": "^1.2.1",
     "request": "^2.78.0",
     "xtend": "^4.0.1",
-    "natural": "^0.4.0"
+    "natural": "^0.4.0",
+    "sentiment": "^2.1.0"
   }
 }
