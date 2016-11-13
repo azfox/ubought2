@@ -87,7 +87,7 @@ controller.hears(['TRAINING TIME'], 'message_received', function (bot, message) 
 
 // user says anything else
 controller.hears('(.*)', 'message_received', function (bot, message) {
-  bot.reply(message, 'you said ' + message.match[1] + ' attachments: ' + message.attachments)
+  bot.reply(message, 'you said ' + message.match[1])
   var interpretation = myBrain.interpret(message.text);
   console.log('uBought heard: ' + message.text);
   console.log('uBought interpretation: ', interpretation);
@@ -113,8 +113,11 @@ var handler = function (obj) {
     for (var e = 0; e < obj.entry.length; e++) {
       for (var m = 0; m < obj.entry[e].messaging.length; m++) {
         var facebook_message = obj.entry[e].messaging[m]
+        console.log("Entire message -->")
+        console.log(obj.entry[3])
 
         console.log(facebook_message)
+
 
         // normal message
         if (facebook_message.message) {
