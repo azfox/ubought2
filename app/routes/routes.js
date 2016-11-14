@@ -1,7 +1,7 @@
 /* eslint-disable brace-style */
 /* eslint-disable camelcase */
 var facebook_handler = require('../controllers/botkit').handler
-var geoip = require('geoip-lite')
+var geoip = require('geoip-lite');
 
 console.log("made it through facebook_handler")
 
@@ -27,10 +27,10 @@ module.exports = function (app) {
     facebook_handler(req.body, req.ip)
     //var geo_location = geoip.lookup(getRemoteIP(req));
     //console.log('geolocation: ' + geo_location)
-    var s = req.ip
+    var s = req.ips
     s = s.replace(/^::ffff:/, "").toString();
     console.log(s)
-    console.log('try 2 on Ip ' + geoip.lookup(s))
+    //console.log('try 2 on Ip ' + geoip.lookup(s))
     res.send('ok')
   })
 
