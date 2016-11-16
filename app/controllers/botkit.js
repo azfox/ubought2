@@ -109,7 +109,7 @@ controller.hears('(.*)', 'message_received', function (bot, message) {
 });
 
 // this function processes the POST request to the webhook
-var handler = function (obj, ip) {
+var handler = function (obj) {
   controller.debug('GOT A MESSAGE HOOK')
   var message
   if (obj.entry) {

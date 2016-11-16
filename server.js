@@ -6,6 +6,7 @@ var http = require('http').Server(app)      // préparer le serveur web
 var dotenv = require('dotenv').config()
 var path = require('path')
 
+
 // configuration ===========================================
 
 // load environment variables,
@@ -25,7 +26,8 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing url encoded
 app.set('view engine', 'ejs')
 console.log('Finished Express..requiring App')
 
-
+var cities = require ('countries-cities').getCities("United States of America");
+console.log(cities[1])
 // routes
 require('./app/routes/routes')(app)
 
