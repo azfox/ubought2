@@ -26,8 +26,7 @@ app.use(bodyParser.urlencoded({ extended: true })) // for parsing url encoded
 app.set('view engine', 'ejs')
 console.log('Finished Express..requiring App')
 
-var cities = require ('countries-cities').getCities("United States of America");
-console.log(cities[1])
+
 // routes
 require('./app/routes/routes')(app)
 
