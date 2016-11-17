@@ -25,7 +25,8 @@
     "natural": "^0.4.0",
     "sentiment": "^2.1.0",
     "geoip-lite": "^1.1.8",
-    "countries-cities": "^0.0.11",
-    "openweather-node":"^0.0.4"
+    "mongodb": "^2.2.11",
+    "pos": "^0.4.2",
+    "forecast": "^0.3.2"
   }
 }
