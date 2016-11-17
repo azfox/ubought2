@@ -19,6 +19,7 @@ module.exports = function (app) {
       res.send(req.query['hub.challenge'])
     }
     else {
+      console.log("not verified asshole");
       res.send('Incorrect verify token')
     }
   })
