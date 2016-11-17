@@ -35,7 +35,7 @@ module.exports = {
     'who are you',
     'what are you'
   ],
-  Weather: [
+  "Weather": [
     'what is the weather like today?',
     'tell me about the weather in',
     'should i wear a jacket',
