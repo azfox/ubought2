@@ -33,6 +33,15 @@ module.exports = {
     'are you alive',
     'are you up',
     'who are you',
-    'what are you'    
+    'what are you'
+  ],
+  Weather: [
+    'what is the weather like today?',
+    'tell me about the weather in',
+    'should i wear a jacket',
+    'what is it like outside',
+    'is it hot outside in ?',
+    'is there a chance of rain today in'
   ]
+
 };
