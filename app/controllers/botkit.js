@@ -83,7 +83,7 @@ controller.hears(['hello'], 'message_received', function (bot, message) {
 
 controller.hears(['TRAINING TIME'], 'message_received', function (bot, message) {
   console.log('Delegating to on-the-fly training module...');
-  Train(myBrain, speech, message);
+  Train(myBrain, bot, message);
 })
 
 
