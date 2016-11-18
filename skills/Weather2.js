@@ -64,7 +64,7 @@ if(message.intents.entities.location.value){
   bot.reply(message, "Oh Man.  I would love to tell you the Weather but you never told me where...the world is vastly different you know!!")
 }
 
-geocoder.geocode("Atlanta, GA", function ( err, data ) {
+geocoder.geocode(location, function ( err, data ) {
   // do stuff with data
   if(err){
     bot.reply(message, "Uh Oh, it didn;t quite understand the location you suggested : " + location +
@@ -85,7 +85,9 @@ geocoder.geocode("Atlanta, GA", function ( err, data ) {
 
 // Retrieve weather information from coordinates (Sydney, Australia)
 forecast.get([lat, lng], function(err, weather) {
-  if(err) return console.dir(err);
+  if(err){
+    bot.reply(message, "Bad longitude and latitude found!")
+  }
   console.dir(weather);
   bot.reply(message, 'Current Weather in Boston'
                     + ': Summary: ' + weather.currently.summary +
