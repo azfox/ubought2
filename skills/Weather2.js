@@ -96,7 +96,7 @@ forecast.get([lat, lng], function(err, weather) {
     return;
   }
   console.dir(weather);
-  bot.reply(message, 'Current Weather in Boston'
+  bot.reply(message, 'Current Weather in ' + location
                     + ': Summary: ' + weather.currently.summary +
                      ', Temp: ' + weather.currently.temperature +
                      ', Chance Of Rain: ' +  weather.currently.precipProbability*100 )
