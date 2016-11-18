@@ -99,7 +99,7 @@ controller.hears(['TRAINING TIME'], 'message_received', function (bot, message) 
 controller.hears('(.*)', 'message_received', function (bot, message) {
   console.log('message to work with: ' + message)
   bot.reply(message, 'you said ' + message.match[1])
-  console.log(wit.intents)
+  console.log(message.intents)
   var interpretation = myBrain.interpret(message.text);
   console.log('uBought heard: ' + message.text);
   console.log('uBought interpretation: ', interpretation);
