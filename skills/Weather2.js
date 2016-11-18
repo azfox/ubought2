@@ -62,10 +62,10 @@ var lng = -71.020173
 forecast.get([lat, lng], function(err, weather) {
   if(err) return console.dir(err);
   console.dir(weather);
-  bot.reply(message, ('Current Weather in Boston'
-                    + ': Current Summary: ' + weather.currently.summary +
-                     ', Current Temp: ' + weather.currently.temperature +
-                     ', Chance Of Rain: '  weather.currently.precipProbability*100 ))
+  bot.reply(message, 'Current Weather in Boston' \
+                    + ': Current Summary: ' + weather.currently.summary + \
+                     ', Current Temp: ' + weather.currently.temperature + \
+                     ', Chance Of Rain: '  weather.currently.precipProbability*100 )
 });
 
 /*
