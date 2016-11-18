@@ -96,6 +96,7 @@ controller.hears(['TRAINING TIME'], 'message_received', function (bot, message) 
 controller.middleware.receive.use(wit.receive);
 // user says anything else
 controller.hears('(.*)', 'message_received',wit.hears, function (bot, message) {
+  console.log('message to work with: ' + message)
   bot.reply(message, 'you said ' + message.match[1])
   console.log(wit.intents)
   var interpretation = myBrain.interpret(message.text);
