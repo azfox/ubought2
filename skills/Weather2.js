@@ -2,21 +2,21 @@ module.exports = function(skill, info, bot, message) {
 var request = require("request")
 //var weather = require("Openweather-Node")
 
-var pos = require('pos');
+//var pos = require('pos');
 
-var words = new pos.Lexer().lex(message);
-var tagger = new pos.Tagger();
-var taggedWords = tagger.tag(words);
+//var words = new pos.Lexer().lex(message);
+//var tagger = new pos.Tagger();
+//var taggedWords = tagger.tag(words);
 
-var wordsForDB = []
+//var wordsForDB = []
 
-for (i in taggedWords) {
-    var taggedWord = taggedWords[i];
-    if(taggedWord[1] == 'NNP'){
-	     wordsForDB.push(taggedWord[0].toUpperCase())
-    }
+//for (i in taggedWords) {
+//    var taggedWord = taggedWords[i];
+//    if(taggedWord[1] == 'NNP'){
+//	     wordsForDB.push(taggedWord[0].toUpperCase())
+//    }
 
-}
+//}
 
 //qery database with wordsForDB for DB
 
@@ -33,13 +33,13 @@ for (i in taggedWords) {
 
 //query the citilist db with fuzzy match from the the city
 //lets require/import the mongodb native drivers.
-var mongodb = require('mongodb');
+//var mongodb = require('mongodb');
 
 //We need to work with "MongoClient" interface in order to connect to a mongodb server.
-var MongoClient = mongodb.MongoClient;
+//var MongoClient = mongodb.MongoClient;
 
 // Connection URL. This is where your mongodb server is running.
-var url = process.env.MONGODB_URI;
+//var url = process.env.MONGODB_URI;
 
 // Require the module
 var Forecast = require('forecast');
