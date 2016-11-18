@@ -41,30 +41,55 @@ var request = require("request")
 // Connection URL. This is where your mongodb server is running.
 //var url = process.env.MONGODB_URI;
 
-// Require the module
+var geocoder = require('geocoder');
 var Forecast = require('forecast');
-
-// Initialize
 var forecast = new Forecast({
   service: 'darksky',
   key: '8a051eedd4086072db979731cf418402',
-  units: 'celcius',
+  units: 'fahrenheit',
   cache: true,      // Cache API requests
   ttl: {            // How long to cache requests. Uses syntax from moment.js: http://momentjs.com/docs/#/durations/creating/
     minutes: 27,
     seconds: 45
   }
 });
+// Geocoding
 
 var lat = 42.33196
 var lng = -71.020173
+var location = ''
+if(message.intents.entities.location.value){
+  location = message.intents.entities.location.value
+}else{
+  bot.reply(message, "Oh Man.  I would love to tell you the Weather but you never told me where...the world is vastly different you know!!")
+}
+
+geocoder.geocode("Atlanta, GA", function ( err, data ) {
+  // do stuff with data
+  if(err){
+    bot.reply(message, "Uh Oh, it didn;t quite understand the location you suggested : " + location +
+                " did you maybe forget the state?"
+              )
+  }else {
+    lat = data.latitude
+    lng = data.longitude
+  }
+});
+
+// Require the module
+
+
+// Initialize
+
+
+
 // Retrieve weather information from coordinates (Sydney, Australia)
 forecast.get([lat, lng], function(err, weather) {
   if(err) return console.dir(err);
   console.dir(weather);
   bot.reply(message, 'Current Weather in Boston'
-                    + ': Current Summary: ' + weather.currently.summary +
-                     ', Current Temp: ' + weather.currently.temperature +
+                    + ': Summary: ' + weather.currently.summary +
+                     ', Temp: ' + weather.currently.temperature +
                      ', Chance Of Rain: ' +  weather.currently.precipProbability*100 )
 });
 
