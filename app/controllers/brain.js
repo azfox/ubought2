@@ -60,6 +60,7 @@ Brain.prototype.invoke = function(skill, info, bot, message) {
     }
     skillCode = require('../../skills/' + skill);
   } catch (err) {
+    console.log("couldn't invoke skill error: \n" + err)
     throw new Error('The invoked skill doesn\'t exist!');
   }
   console.log('Running skill code for ' + skill + '...');
