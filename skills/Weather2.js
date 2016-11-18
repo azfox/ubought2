@@ -78,8 +78,8 @@ geocoder.geocode(location, function ( err, data ) {
   }else {
     var loc = data.results[0].geometry.location
     console.log(loc)
-    lat = loc[0]
-    lng = loc[1]
+    lat = loc.latitude
+    lng = loc.longitude
     console.log(data)
   }
 
