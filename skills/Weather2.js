@@ -58,9 +58,10 @@ var forecast = new Forecast({
 var lat = 42.33196
 var lng = -71.020173
 var location = ''
-if(message.intents.entities.location.value){
+try{
   location = message.intents.entities.location.value
-}else{
+}
+catch{
   bot.reply(message, "Oh Man.  I would love to tell you the Weather but you never told me where...the world is vastly different you know!!")
 }
 
