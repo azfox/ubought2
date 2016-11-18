@@ -43,12 +43,13 @@ request.post('https://graph.facebook.com/me/subscribed_apps?access_token=' + pro
 
       // start ticking to send conversation messages
       controller.startTicking()
+
     }
   }
 )
 
 console.log('botkit')
-
+controller.middleware.receive.use(wit.receive);
 //allow middleware wit.ai
 //controller.middleware.receive.use(wit.receive);
 
@@ -93,7 +94,7 @@ controller.hears(['TRAINING TIME'], 'message_received', function (bot, message) 
 })
 
 
-controller.middleware.receive.use(wit.receive);
+
 // user says anything else
 controller.hears('(.*)', 'message_received',wit.hears, function (bot, message) {
   console.log('message to work with: ' + message)
