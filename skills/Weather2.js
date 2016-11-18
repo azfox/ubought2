@@ -88,9 +88,9 @@ geocoder.geocode(location, function ( err, data ) {
       }
       //console.dir(weather);
       bot.reply(message, 'Current Weather in ' + location
-                        + ': Summary: ' + weather.currently.summary +
-                         ', Temp: ' + weather.currently.temperature +
-                         ', Chance Of Rain: ' +  weather.currently.precipProbability*100 )
+                        + ': Summary: ' + weather.currently.summary + '\n' +
+                         'Temp: ' + weather.currently.temperature + 'Degrees F\n' +
+                         ', Chance Of Rain: ' +  weather.currently.precipProbability*100 + '%' )
 
     });
   }
