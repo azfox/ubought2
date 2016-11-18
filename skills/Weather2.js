@@ -1,6 +1,6 @@
 module.exports = function(skill, info, bot, message) {
 var request = require("request")
-var weather = require("Openweather-Node")
+//var weather = require("Openweather-Node")
 
 var pos = require('pos');
 
@@ -64,7 +64,7 @@ forecast.get([lat, lng], function(err, weather) {
   console.dir(weather);
   bot.reply(message, 'Current Weather in Boston'
                     + ': Current Summary: ' + weather.currently.summary +
-                     ', Current Temp: ' + weather.currently.temperature + 
+                     ', Current Temp: ' + weather.currently.temperature +
                      ', Chance Of Rain: ' +  weather.currently.precipProbability*100 )
 });
 
