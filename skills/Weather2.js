@@ -47,7 +47,7 @@ var Forecast = require('forecast');
 // Initialize
 var forecast = new Forecast({
   service: 'darksky',
-  key: 'your-api-key',
+  key: '8a051eedd4086072db979731cf418402',
   units: 'celcius',
   cache: true,      // Cache API requests
   ttl: {            // How long to cache requests. Uses syntax from moment.js: http://momentjs.com/docs/#/durations/creating/
