@@ -77,7 +77,7 @@ geocoder.geocode(location, function ( err, data ) {
     return;
   }else {
     var loc = data.results[0].geometry.location
-    console.log(loc)
+    console.log(JSON.parse(loc))
     lat = loc.latitude
     lng = loc.longitude
     console.log(data)
