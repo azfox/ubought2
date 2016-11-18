@@ -50,7 +50,7 @@ request.post('https://graph.facebook.com/me/subscribed_apps?access_token=' + pro
 console.log('botkit')
 
 //allow middleware wit.ai
-controller.middleware.receive.use(wit.receive);
+//controller.middleware.receive.use(wit.receive);
 
 //learn some things then listen
 var customPhrasesText;
