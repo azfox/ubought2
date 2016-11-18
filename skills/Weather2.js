@@ -58,10 +58,10 @@ var forecast = new Forecast({
 var lat = 42.33196
 var lng = -71.020173
 var location = ''
-try{
+try {
   location = message.intents.entities.location.value
 }
-catch{
+catch {
   bot.reply(message, "Oh Man.  I would love to tell you the Weather but you never told me where...the world is vastly different you know!!")
 }
 
@@ -75,6 +75,7 @@ geocoder.geocode(location, function ( err, data ) {
     lat = data.latitude
     lng = data.longitude
   }
+
 });
 
 // Require the module
@@ -94,6 +95,7 @@ forecast.get([lat, lng], function(err, weather) {
                     + ': Summary: ' + weather.currently.summary +
                      ', Temp: ' + weather.currently.temperature +
                      ', Chance Of Rain: ' +  weather.currently.precipProbability*100 )
+
 });
 
 /*
