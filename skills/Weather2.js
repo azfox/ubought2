@@ -41,7 +41,34 @@ var MongoClient = mongodb.MongoClient;
 // Connection URL. This is where your mongodb server is running.
 var url = process.env.MONGODB_URI;
 
+// Require the module
+var Forecast = require('forecast');
 
+// Initialize
+var forecast = new Forecast({
+  service: 'darksky',
+  key: 'your-api-key',
+  units: 'celcius',
+  cache: true,      // Cache API requests
+  ttl: {            // How long to cache requests. Uses syntax from moment.js: http://momentjs.com/docs/#/durations/creating/
+    minutes: 27,
+    seconds: 45
+  }
+});
+
+var lat = 42.33196
+var lng = -71.020173
+// Retrieve weather information from coordinates (Sydney, Australia)
+forecast.get([lat, lng], function(err, weather) {
+  if(err) return console.dir(err);
+  console.dir(weather);
+  bot.reply(message, 'Current Weather in Boston' //+ result[0].primary_city
+                      + ': Current Summary: ' + weather.currently.summary +
+                     ', Current Temp: ' + weather.currently.temperature +
+                     ', Chance Of Rain: '  weather.currently.precipProbability*100 + '%' )
+});
+
+/*
 // Use connect method to connect to the Server
 MongoClient.connect(url, function (err, db) {
   if (err) {
@@ -111,6 +138,6 @@ MongoClient.connect(url, function (err, db) {
     });
   }
 });
-
+*/
 
 };
