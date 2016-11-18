@@ -63,6 +63,7 @@ try {
 }
 catch(err) {
   bot.reply(message, "Oh Man.  I would love to tell you the Weather but you never told me where...the world is vastly different you know!!")
+  return;
 }
 
 geocoder.geocode(location, function ( err, data ) {
@@ -71,6 +72,7 @@ geocoder.geocode(location, function ( err, data ) {
     bot.reply(message, "Uh Oh, it didn;t quite understand the location you suggested : " + location +
                 " did you maybe forget the state?"
               )
+    return;
   }else {
     lat = data.latitude
     lng = data.longitude
@@ -89,6 +91,7 @@ geocoder.geocode(location, function ( err, data ) {
 forecast.get([lat, lng], function(err, weather) {
   if(err){
     bot.reply(message, "Bad longitude and latitude found!")
+    return;
   }
   console.dir(weather);
   bot.reply(message, 'Current Weather in Boston'
