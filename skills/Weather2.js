@@ -48,14 +48,14 @@ MongoClient.connect(url, function (err, db) {
     console.log('Unable to connect to the mongoDB server. Error:', err);
     bot.reply(message, 'OOPSIE!...Ubought Wasn\'t quite able to connect to his Weather Brain (must be cloudy)...Try back later!!')
   } else {
-    //HURRAY!! We are connected. :
+    //HURRAY!! We are connected.
     console.log('Connection established to', url);
 
     // Get the documents collection
     var collection = db.collection('CitiList');
 
     // Insert some users
-    collection.find({$and: [{primary_city_upper: $in: {wordsForDB}},{state: $in: {wordsForDB}}]}).toArray(function (err, result) {
+    collection.find({$and: [{primary_city_upper: {$in: wordsForDB},{state: {$in: wordsForDB}}}]}).toArray(function (err, result) {
       if (err) {
         console.log(err);
         bot.reply(message, 'OOPSIE!...Can you give me a new Location for Weather? I am unable to Find location out of:'+ wordsForDB.join());

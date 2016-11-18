@@ -14,10 +14,13 @@ var Train = require('./train');
 var Brain = require('./brain');
 var myBrain = new Brain()
 var builtinPhrases = require('../../builtins');
+var wit = require('botkit-middleware-witai')({
+    token: process.env.WIT_ACCESS_TOKEN
+});
 //done adding stuff
 
 //ip info
-var geoip = require("geoip-lite");
+//var geoip = require("geoip-lite");
 
 var controller = Botkit.facebookbot({
   debug: false,
@@ -45,6 +48,9 @@ request.post('https://graph.facebook.com/me/subscribed_apps?access_token=' + pro
 )
 
 console.log('botkit')
+
+//allow middleware wit.ai
+controller.middleware.receive.use(wit.receive);
 
 //learn some things then listen
 var customPhrasesText;
@@ -89,8 +95,9 @@ controller.hears(['TRAINING TIME'], 'message_received', function (bot, message) 
 
 
 // user says anything else
-controller.hears('(.*)', 'message_received', function (bot, message) {
+controller.hears('(.*)', 'message_received',wit.hears, function (bot, message) {
   bot.reply(message, 'you said ' + message.match[1])
+  console.log(wit.intents)
   var interpretation = myBrain.interpret(message.text);
   console.log('uBought heard: ' + message.text);
   console.log('uBought interpretation: ', interpretation);
