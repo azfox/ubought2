@@ -93,7 +93,7 @@ controller.hears(['TRAINING TIME'], 'message_received', function (bot, message) 
 })
 
 
-
+controller.middleware.receive.use(wit.receive);
 // user says anything else
 controller.hears('(.*)', 'message_received',wit.hears, function (bot, message) {
   bot.reply(message, 'you said ' + message.match[1])
