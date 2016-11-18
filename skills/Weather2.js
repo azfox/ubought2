@@ -62,7 +62,7 @@ try {
   location = message.intents.entities.location.value
 }
 catch(err) {
-  console.log(message.intents.entities)
+  console.log(message.intents)
   //console.log(message.intents.entities[0])
   bot.reply(message, "Oh Man.  I would love to tell you the Weather but you never told me where...the world is vastly different you know!!")
   return;
