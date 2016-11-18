@@ -55,8 +55,8 @@ var forecast = new Forecast({
 });
 // Geocoding
 
-var lat = 42.33196
-var lng = -71.020173
+var lat = -1000.0
+var lng = -1000.0
 var location = ''
 try {
   location = message.intents[0].entities.location[0].value
@@ -80,7 +80,19 @@ geocoder.geocode(location, function ( err, data ) {
     //console.log(JSON.parse(loc))
     lat = loc.lat
     lng = loc.lng
-    console.log("latitude is --->" + lat)
+    // Retrieve weather information from coordinates (Sydney, Australia)
+    forecast.get([lat, lng], function(err, weather) {
+      if(err){
+        bot.reply(message, "Bad longitude and latitude found!")
+        return;
+      }
+      //console.dir(weather);
+      bot.reply(message, 'Current Weather in ' + location
+                        + ': Summary: ' + weather.currently.summary +
+                         ', Temp: ' + weather.currently.temperature +
+                         ', Chance Of Rain: ' +  weather.currently.precipProbability*100 )
+
+    });
   }
 
 });
@@ -92,19 +104,6 @@ geocoder.geocode(location, function ( err, data ) {
 
 
 
-// Retrieve weather information from coordinates (Sydney, Australia)
-forecast.get([lat, lng], function(err, weather) {
-  if(err){
-    bot.reply(message, "Bad longitude and latitude found!")
-    return;
-  }
-  console.dir(weather);
-  bot.reply(message, 'Current Weather in ' + location
-                    + ': Summary: ' + weather.currently.summary +
-                     ', Temp: ' + weather.currently.temperature +
-                     ', Chance Of Rain: ' +  weather.currently.precipProbability*100 )
-
-});
 
 /*
 // Use connect method to connect to the Server
