@@ -165,7 +165,6 @@ function send4AmazonResults(bot,message,results,kw) {
 
     //bot.reply(message, messageData);
     bot.reply(message,{
-      text: 'See below...',
       attachments: messageData
     },function(err,resp) {
       console.log(err,resp);
