@@ -12,7 +12,7 @@ var client = amazon.createClient({
 });
 
 //eventual keywords will be from the message.itents from wit ai but im not there yet
-var kw = 'cheap running shoes',
+var kw = 'cheap running shoes'
 
 //I will update the client search atsome pont but for i want to focus on this
 client.itemSearch({
