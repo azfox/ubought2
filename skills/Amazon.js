@@ -165,12 +165,12 @@ function send4AmazonResults(bot,message,results,kw) {
 
     //bot.reply(message, messageData);
     bot.reply(message,{
-      attachment: messageData,
+      attachment: [messageData],
     },function(err,resp) {
       console.log("error trying to send attachments")
-      console.log(messageData)
+      //console.log(messageData)
       console.log(err,resp);
-      console.log(resp);
+      console.log(JSON.stringify(err));
       console.log("do i need a sender id??")
     });
 
