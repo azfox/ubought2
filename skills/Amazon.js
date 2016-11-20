@@ -162,11 +162,13 @@ function send4AmazonResults(bot,message,results,kw) {
               ]
           }
     };
+    /*
     bot.reply(message, {
     attachment: messageData,
     });
+    */
     //bot.reply(message, messageData);
-    /*
+
     bot.reply(message,{
       attachment: messageData,
     },function(err,resp) {
@@ -176,7 +178,7 @@ function send4AmazonResults(bot,message,results,kw) {
       console.log(JSON.stringify(err));
       console.log("do i need a sender id??")
     });
-    */
+    
 }
 
 
