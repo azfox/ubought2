@@ -50,6 +50,17 @@ module.exports = {
     'is there going to be rain or snow today?',
     'snow today?',
     'weather'
+  ],
+
+  "Amazon": [
+    "Find some good deals on Amazon for",
+    "I want to buy a new",
+    "I am looking for a cheap",
+    "Amazon running shoes",
+    "something on Amazon",
+    "looking to buy",
+    "Amazon audiobooks",
+    "Amazon deals for"
   ]
 
 };

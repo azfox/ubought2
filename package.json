@@ -29,6 +29,7 @@
     "sentiment": "^2.1.0",
     "xtend": "^4.0.1",
     "botkit-middleware-witai": "^0.0.2",
-    "geocoder": "^0.2.2"
+    "geocoder": "^0.2.2",
+    "amazon-product-api": "^0.4.2"
   }
 }
