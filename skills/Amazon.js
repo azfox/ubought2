@@ -25,7 +25,7 @@ client.itemSearch({
   } else {
     console.log(results);  // products (Array of Object)
     //console.log(response); // response (Array where the first element is an Object that contains Request, Item, etc.)
-    send4AmazonResults(bot,results,kw);
+    send4AmazonResults(bot,message,results,kw);
 
   }
 });
@@ -36,7 +36,7 @@ client.itemSearch({
 
 
 //amazon template
-function send4AmazonResults(bot,results,kw) {
+function send4AmazonResults(bot,message,results,kw) {
     //using the rusults, build a list of 4
     //need img_url, subtitles, action_url, titles
     var img_url =[]
