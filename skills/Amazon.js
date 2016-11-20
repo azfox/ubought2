@@ -52,6 +52,7 @@ function send4AmazonResults(bot,message,results,kw) {
         subtitles.push(results[e].ItemAttributes[0].Title[0])
         action_url.push(results[e].DetailPageURL[0])
         img_url.push(results[e].SmallImage[0].URL[0])
+        console.log(results[e].ItemAttributes[0].Title[0])
 
     }
 
@@ -164,7 +165,7 @@ function send4AmazonResults(bot,message,results,kw) {
     //bot.reply(message, messageData);
     bot.reply(message,{
       text: 'See below...',
-      attachments: messageData,
+      attachments: messageData
     },function(err,resp) {
       console.log(err,resp);
     });
