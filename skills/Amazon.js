@@ -165,8 +165,9 @@ function send4AmazonResults(bot,message,results,kw) {
 
     //bot.reply(message, messageData);
     bot.reply(message,{
-      attachments: messageData
+      attachment: messageData
     },function(err,resp) {
+      console.log("error trying to send attachments")
       console.log(err,resp);
     });
 
