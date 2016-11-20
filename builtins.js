@@ -4,7 +4,11 @@ module.exports = {
     'We could use some humor here...',
     'How about a joke?',
     'I\'d do well with a laugh right about now.',
-    'Joke around with use please :)'
+    'Joke around with use please :)',
+    'more jokes!',
+    'I could use a laugh',
+    'tell me a joke please',
+    'jokes please'
   ],
   SimonSays: [
     'Repeat back to me lorem ipsum dolor amet',
@@ -41,7 +45,11 @@ module.exports = {
     'should i wear a jacket',
     'what is it like outside',
     'is it hot outside in ?',
-    'is there a chance of rain today in'
+    'is there a chance of rain today in',
+    'is it rainy ',
+    'is there going to be rain or snow today?',
+    'snow today?',
+    'weather'
   ]
 
 };

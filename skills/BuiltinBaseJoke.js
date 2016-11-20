@@ -12,6 +12,8 @@ request({
     if (!error && response.statusCode === 200) {
         //console.log(body) // Print the json response
         bot.reply(message,body.text+ ':#JokingAround:');
+    } else{
+        bot.reply(message, "I am all out of free Jokes and I am too cheap to pay the Joke API #NotJoking")
     }
 })
 
