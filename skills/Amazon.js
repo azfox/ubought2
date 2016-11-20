@@ -23,7 +23,8 @@ client.itemSearch({
   if (err) {
     console.log(err);
   } else {
-    console.log(results);  // products (Array of Object)
+    //console.log(results);  // products (Array of Object)
+    console.log("Amazon Results Found")
     //console.log(response); // response (Array where the first element is an Object that contains Request, Item, etc.)
     send4AmazonResults(bot,message,results,kw);
 
