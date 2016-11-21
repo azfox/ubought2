@@ -26,7 +26,7 @@ client.itemSearch({
     //console.log(results);  // products (Array of Object)
     console.log("Amazon Results Found")
     //console.log(response); // response (Array where the first element is an Object that contains Request, Item, etc.)
-    send4AmazonResults2(bot,message,results,kw);
+    send4AmazonResults(bot,message,results,kw);
 
   }
 });
@@ -157,7 +157,7 @@ function send4AmazonResults(bot,message,results,kw) {
                   {
                       "title": "View More",
                       "type": "postback",
-                      "payload": "payload"
+                      "payload": 'more Amazon shoes'
                   }
               ]
           }
@@ -168,7 +168,7 @@ function send4AmazonResults(bot,message,results,kw) {
     });
     */
     //bot.reply(message, messageData);
-
+    /*
     bot.reply(message,{
       attachment: messageData,
     },function(err,resp) {
@@ -178,6 +178,7 @@ function send4AmazonResults(bot,message,results,kw) {
       console.log(JSON.stringify(err));
       console.log("do i need a sender id??")
     });
+    */
 
 }
 
