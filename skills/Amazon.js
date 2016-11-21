@@ -201,7 +201,8 @@ function send4AmazonResults2(bot,message,results,kw) {
                   'buttons':[
                       {
                         'type':'postback',
-                        'title':'Eat Cookie',
+                        'title':'Buy',
+                        'url': results[0].DetailPageURL[0],
                         'payload':'chocolate'
                       }
                   ]
