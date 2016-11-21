@@ -67,8 +67,7 @@ function send4AmazonResults(bot,message,results,kw) {
                   {
                       "title": titles[0],
                       "image_url": img_url[0],
-                      "subtitle": subtitles[0]
-                      },
+                      "subtitle": subtitles[0],
                       "buttons": [
                           {
                               "title": "Buy",
@@ -83,8 +82,7 @@ function send4AmazonResults(bot,message,results,kw) {
                   {
                       "title": titles[1],
                       "image_url": img_url[1],
-                      "subtitle": subtitles[1]
-                      },
+                      "subtitle": subtitles[1],
                       "buttons": [
                           {
                               "title": "Buy",
@@ -99,8 +97,7 @@ function send4AmazonResults(bot,message,results,kw) {
                   {
                       "title": titles[2],
                       "image_url": img_url[2],
-                      "subtitle": subtitles[2]
-                      },
+                      "subtitle": subtitles[2],
                       "buttons": [
                           {
                               "title": "Buy",
@@ -115,8 +112,7 @@ function send4AmazonResults(bot,message,results,kw) {
                   {
                       "title": titles[3],
                       "image_url": img_url[3],
-                      "subtitle": subtitles[3]
-                      },
+                      "subtitle": subtitles[3],
                       "buttons": [
                           {
                               "title": "Buy",
