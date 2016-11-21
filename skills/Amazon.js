@@ -195,15 +195,14 @@ function send4AmazonResults2(bot,message,results,kw) {
           'template_type':'generic',
           'elements':[
               {
-                  'title': 'blah',
+                  'title': kw,
                   'image_url':results[0].SmallImage[0].URL[0],
                   'subtitle':results[0].ItemAttributes[0].Title[0],
                   'buttons':[
                       {
-                        'type':'postback',
+                        'type':'web_url',
                         'title':'Buy',
-                        'url': results[0].DetailPageURL[0],
-                        'payload':'chocolate'
+                        'url': results[0].DetailPageURL[0]
                       }
                   ]
               },
