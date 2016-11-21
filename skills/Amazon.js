@@ -26,7 +26,7 @@ client.itemSearch({
     //console.log(results);  // products (Array of Object)
     console.log("Amazon Results Found")
     //console.log(response); // response (Array where the first element is an Object that contains Request, Item, etc.)
-    send4AmazonResults2(bot,message,results,kw);
+    send4AmazonResults(bot,message,results,kw);
 
   }
 });
@@ -67,88 +67,64 @@ function send4AmazonResults(bot,message,results,kw) {
                   {
                       "title": titles[0],
                       "image_url": img_url[0],
-                      "subtitle": subtitles[0],
-                      "default_action": {
-                          "type": "web_url",
-                          "url": action_url[0],
-                          "messenger_extensions": true,
-                          "webview_height_ratio": "tall",
-                          "fallback_url": "https://www.amazon.com/"
+                      "subtitle": subtitles[0]
                       },
                       "buttons": [
                           {
                               "title": "Buy",
                               "type": "web_url",
-                              "url": action_url[0],
-                              "messenger_extensions": true,
-                              "webview_height_ratio": "tall",
-                              "fallback_url": "https://www.amazon.com/"
+                              "url": action_url[0]
+                              //"messenger_extensions": true,
+                              //"webview_height_ratio": "tall",
+                              //"fallback_url": "https://www.amazon.com/"
                           }
                       ]
                   },
                   {
                       "title": titles[1],
                       "image_url": img_url[1],
-                      "subtitle": subtitles[1],
-                      "default_action": {
-                          "type": "web_url",
-                          "url": action_url[1],
-                          "messenger_extensions": true,
-                          "webview_height_ratio": "tall",
-                          "fallback_url": "https://www.amazon.com/"
+                      "subtitle": subtitles[1]
                       },
                       "buttons": [
                           {
                               "title": "Buy",
                               "type": "web_url",
-                              "url": action_url[1],
-                              "messenger_extensions": true,
-                              "webview_height_ratio": "tall",
-                              "fallback_url": "https://www.amazon.com/"
+                              "url": action_url[1]
+                              //"messenger_extensions": true,
+                              //"webview_height_ratio": "tall",
+                              //"fallback_url": "https://www.amazon.com/"
                           }
                       ]
                   },
                   {
                       "title": titles[2],
                       "image_url": img_url[2],
-                      "subtitle": subtitles[2],
-                      "default_action": {
-                          "type": "web_url",
-                          "url": action_url[2],
-                          "messenger_extensions": true,
-                          "webview_height_ratio": "tall",
-                          "fallback_url": "https://www.amazon.com/"
+                      "subtitle": subtitles[2]
                       },
                       "buttons": [
                           {
                               "title": "Buy",
                               "type": "web_url",
-                              "url": action_url[2],
-                              "messenger_extensions": true,
-                              "webview_height_ratio": "tall",
-                              "fallback_url": "https://www.amazon.com/"
+                              "url": action_url[2]
+                              //"messenger_extensions": true,
+                              //"webview_height_ratio": "tall",
+                              //"fallback_url": "https://www.amazon.com/"
                           }
                       ]
                   },
                   {
                       "title": titles[3],
                       "image_url": img_url[3],
-                      "subtitle": subtitles[3],
-                      "default_action": {
-                          "type": "web_url",
-                          "url": action_url[3],
-                          "messenger_extensions": true,
-                          "webview_height_ratio": "tall",
-                          "fallback_url": "https://www.amazon.com/"
+                      "subtitle": subtitles[3]
                       },
                       "buttons": [
                           {
                               "title": "Buy",
                               "type": "web_url",
-                              "url": action_url[3],
-                              "messenger_extensions": true,
-                              "webview_height_ratio": "tall",
-                              "fallback_url": "https://www.amazon.com/"
+                              "url": action_url[3]
+                              //"messenger_extensions": true,
+                              //"webview_height_ratio": "tall",
+                              //"fallback_url": "https://www.amazon.com/"
                           }
                       ]
                   }
