@@ -195,15 +195,14 @@ function send4AmazonResults2(bot,message,results,kw) {
           'template_type':'generic',
           'elements':[
               {
-                  'title':kw.toString(),
-                  'image_url':results[0].SmallImage[0].URL[0].toString(),
-                  'subtitle':results[0].ItemAttributes[0].Title[0].toString(),
+                  'title': 'blah',
+                  'image_url':results[0].SmallImage[0].URL[0],
+                  'subtitle':results[0].ItemAttributes[0].Title[0],
                   'buttons':[
                       {
-                      'type':'postback',
-                      'title':'Buy',
-                      "url": results[0].DetailPageURL[0].toString(),
-                      "messenger_extensions": true
+                        'type':'postback',
+                        'title':'Eat Cookie',
+                        'payload':'chocolate'
                       }
                   ]
               },
