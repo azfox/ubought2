@@ -26,7 +26,7 @@ client.itemSearch({
     //console.log(results);  // products (Array of Object)
     console.log("Amazon Results Found")
     //console.log(response); // response (Array where the first element is an Object that contains Request, Item, etc.)
-    send4AmazonResults(bot,message,results,kw);
+    send4AmazonResults2(bot,message,results,kw);
 
   }
 });
