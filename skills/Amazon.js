@@ -184,7 +184,7 @@ function send4AmazonResults(bot,message,results,kw) {
 
 function send4AmazonResults2(bot,message,results,kw) {
 
-  console.log(results[e].ItemAttributes[0].Title[0])
+  console.log(results[0].ItemAttributes[0].Title[0])
   console.log(kw)
   console.log(results[0].SmallImage[0].URL[0])
   console.log(results[0].DetailPageURL[0])
