@@ -168,7 +168,7 @@ function send4AmazonResults2(bot,message,results,kw) {
           'elements':[
               {
                   'title': kw,
-                  'image_url':results[0].SmallImage[0].URL[0],
+                  'image_url':results[0].LargeImage[0].URL[0],
                   'subtitle':results[0].ItemAttributes[0].Title[0],
                   'buttons':[
                       {
@@ -178,6 +178,42 @@ function send4AmazonResults2(bot,message,results,kw) {
                       }
                   ]
               },
+              {
+                  'title': kw,
+                  'image_url':results[1].LargeImage[0].URL[0],
+                  'subtitle':results[1].ItemAttributes[0].Title[0],
+                  'buttons':[
+                      {
+                        'type':'web_url',
+                        'title':'Buy',
+                        'url': results[1].DetailPageURL[0]
+                      }
+                  ]
+              },
+              {
+                  'title': kw,
+                  'image_url':results[2].LargeImage[0].URL[0],
+                  'subtitle':results[2].ItemAttributes[0].Title[0],
+                  'buttons':[
+                      {
+                        'type':'web_url',
+                        'title':'Buy',
+                        'url': results[2].DetailPageURL[0]
+                      }
+                  ]
+              },
+              {
+                  'title': kw,
+                  'image_url':results[3].LargeImage[0].URL[0],
+                  'subtitle':results[3].ItemAttributes[0].Title[0],
+                  'buttons':[
+                      {
+                        'type':'web_url',
+                        'title':'Buy',
+                        'url': results[3].DetailPageURL[0]
+                      }
+                  ]
+              }
           ]
       }
   };
@@ -188,3 +224,33 @@ function send4AmazonResults2(bot,message,results,kw) {
 }
 
 //need img_url, subtitles, action_url, titles
+
+"attachment": {
+            "type": "template",
+            "payload": {
+                "template_type": "generic",
+                "elements": [{
+                    "title": "First card",
+                    "subtitle": "Element #1 of an hscroll",
+                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
+                    "buttons": [{
+                        "type": "web_url",
+                        "url": "https://www.messenger.com",
+                        "title": "web url"
+                    }, {
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for first element in a generic bubble",
+                    }],
+                }, {
+                    "title": "Second card",
+                    "subtitle": "Element #2 of an hscroll",
+                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
+                    "buttons": [{
+                        "type": "postback",
+                        "title": "Postback",
+                        "payload": "Payload for second element in a generic bubble",
+                    }],
+                }]
+            }
+        }
