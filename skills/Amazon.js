@@ -5,6 +5,18 @@ var amazon = require("amazon-product-api")
 
 bot.reply(message, "Ok please wait while I get you the top 4 results on Amazon... :)")
 
+
+var kw = ''
+try {
+  kw = message.intents[0].entities.search_query[0].value
+}
+catch(err) {
+  console.log(message.intents[0].entities.search_query[0].value)
+  //console.log(message.intents.entities[0])
+  bot.reply(message, "Oh Man.  I would love to tell you the Weather but you never told me where...the world is vastly different you know!!")
+  return;
+}
+
 var client = amazon.createClient({
   awsId: process.env.AMZN_ACCESS_KEY,
   awsSecret: process.env.AMZN_SECRET_ACCESS_KEY,
@@ -12,7 +24,7 @@ var client = amazon.createClient({
 });
 
 //eventual keywords will be from the message.itents from wit ai but im not there yet
-var kw = 'cheap running shoes'
+//var kw = 'cheap running shoes'
 
 //I will update the client search atsome pont but for i want to focus on this
 client.itemSearch({

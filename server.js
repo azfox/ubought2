@@ -29,7 +29,7 @@ console.log('Finished Express..requiring App')
 
 // routes
 require('./app/routes/routes')(app)
-require('./skills/Amazon')
+//require('./skills/Amazon')
 
 
 // port for Heroku
