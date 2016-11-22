@@ -26,7 +26,7 @@ client.itemSearch({
     //console.log(results);  // products (Array of Object)
     console.log("Amazon Results Found")
     //console.log(response); // response (Array where the first element is an Object that contains Request, Item, etc.)
-    send4AmazonResults(bot,message,results,kw);
+    send4AmazonResults2(bot,message,results,kw);
 
   }
 });
@@ -36,7 +36,7 @@ client.itemSearch({
 
 
 
-//amazon template
+//facebook list template that i CANT GET TO WORK!!!!
 function send4AmazonResults(bot,message,results,kw) {
     //using the rusults, build a list of 4
     //need img_url, subtitles, action_url, titles
@@ -224,33 +224,3 @@ function send4AmazonResults2(bot,message,results,kw) {
 }
 
 //need img_url, subtitles, action_url, titles
-
-"attachment": {
-            "type": "template",
-            "payload": {
-                "template_type": "generic",
-                "elements": [{
-                    "title": "First card",
-                    "subtitle": "Element #1 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/rift.png",
-                    "buttons": [{
-                        "type": "web_url",
-                        "url": "https://www.messenger.com",
-                        "title": "web url"
-                    }, {
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for first element in a generic bubble",
-                    }],
-                }, {
-                    "title": "Second card",
-                    "subtitle": "Element #2 of an hscroll",
-                    "image_url": "http://messengerdemo.parseapp.com/img/gearvr.png",
-                    "buttons": [{
-                        "type": "postback",
-                        "title": "Postback",
-                        "payload": "Payload for second element in a generic bubble",
-                    }],
-                }]
-            }
-        }
