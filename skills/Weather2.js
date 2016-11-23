@@ -50,33 +50,38 @@ catch(err) {
 geocoder.geocode(location, function ( err, data ) {
   // do stuff with data
   if(err){
-    bot.reply(message, "Uh Oh, it didn;t quite understand the location you suggested : " + location +
+    bot.reply(message, "Uh Oh, it didn\'t quite understand the location you suggested : " + location +
                 " did you maybe forget the state?"
               )
     return;
   }else {
-    var loc = data.results[0].geometry.location
-    //console.log(JSON.parse(loc))
-    lat = loc.lat
-    lng = loc.lng
-    // Retrieve weather information from coordinates (Sydney, Australia)
-    forecast.get([lat, lng], function(err, weather) {
-      if(err){
-        bot.reply(message, "Bad longitude and latitude found!")
-        return;
-      }
-      //console.dir(weather);
+    try{
+      var loc = data.results[0].geometry.location
+      //console.log(JSON.parse(loc))
+      lat = loc.lat
+      lng = loc.lng
+      // Retrieve weather information from coordinates (Sydney, Australia)
+      forecast.get([lat, lng], function(err, weather) {
+        if(err){
+          bot.reply(message, "Bad longitude and latitude found!")
+          return;
+        }
+        //console.dir(weather);
 
-      //Take first word if multiple words
-      var retLocation = toTitleCase(location.split(" ")[0])
+        //Take first word if multiple words
+        var retLocation = toTitleCase(location.split(" ")[0])
 
 
-      bot.reply(message, 'Current Weather in ' + retLocation
-                        + ': Summary: ' + weather.currently.summary + '\n' +
-                         'Temp: ' + weather.currently.temperature + ' Degrees F\n' +
-                         'Chance Of Rain: ' +  weather.currently.precipProbability*100 + '%' )
+        bot.reply(message, 'Current Weather in ' + retLocation
+                          + ': Summary: ' + weather.currently.summary + '\n' +
+                           'Temp: ' + weather.currently.temperature + ' Degrees F\n' +
+                           'Chance Of Rain: ' +  weather.currently.precipProbability*100 + '%' )
 
-    });
+      });
+    } catch{
+      bot.reply(message, "Uh Oh, it didn\'t quite understand the location you suggested for the Weather. Care to try again?")
+    }
+
   }
 
 });
