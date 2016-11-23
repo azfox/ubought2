@@ -60,7 +60,7 @@ geocoder.geocode(location, function ( err, data ) {
       //console.dir(weather);
 
       //Take first word if multiple words
-      var retLocation = toTitleCase(location.match(/^(\S+)\s(.*)/).slice(1))
+      var retLocation = toTitleCase(location.split(" ")[0])
 
 
       bot.reply(message, 'Current Weather in ' + retLocation
