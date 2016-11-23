@@ -3,7 +3,15 @@ var request = require("request")
 
 var amazon = require("amazon-product-api")
 
-bot.reply(message, "Ok please wait while I get you the top 4 results on Amazon... :)")
+var idx = message.text.indexof('4 more results')
+var sNum = 0
+
+if (idx == -1){
+  bot.reply(message, "Ok please wait while I get you the top 4 results on Amazon... :)")
+}else {
+  sNum = 4
+}
+
 
 
 var kw = ''
@@ -30,7 +38,8 @@ var client = amazon.createClient({
 client.itemSearch({
   keywords: kw,
   availability: 'Available',
-  responseGroup: 'Images,Small,OfferSummary'
+  responseGroup: 'Images,Small,OfferSummary',
+  sort: 'salesrank'
 }, function(err, results, response) {
   if (err) {
     console.log(err);
@@ -38,7 +47,7 @@ client.itemSearch({
     //console.log(results);  // products (Array of Object)
     console.log("Amazon Results Found")
     //console.log(response); // response (Array where the first element is an Object that contains Request, Item, etc.)
-    send4AmazonResults2(bot,message,results,kw);
+    send4AmazonResults2(bot,message,results,kw,sNum);
 
   }
 });
@@ -166,12 +175,17 @@ function send4AmazonResults(bot,message,results,kw) {
 
 }
 
-function send4AmazonResults2(bot,message,results,kw) {
+function send4AmazonResults2(bot,message,results,kw, startNum) {
 
-  console.log(results[0].ItemAttributes[0].Title[0])
-  console.log(kw)
-  console.log(results[0].SmallImage[0].URL[0])
-  console.log(results[0].DetailPageURL[0])
+  //console.log(results[0].ItemAttributes[0].Title[0])
+  //console.log(kw)
+  //console.log(results[0].SmallImage[0].URL[0])
+  //console.log(results[0].DetailPageURL[0])
+  var payload_decision = message.text + ' 4 more results'
+  if(startNum != 0){
+    payload_decision = 'I only Load 8.  Sorry You didn\'t  find what you were looking for'
+  }
+
 
   var attachment = {
       'type':'template',
@@ -180,49 +194,54 @@ function send4AmazonResults2(bot,message,results,kw) {
           'elements':[
               {
                   'title': kw,
-                  'image_url':results[0].LargeImage[0].URL[0],
-                  'subtitle':results[0].ItemAttributes[0].Title[0],
+                  'image_url':results[startNum].LargeImage[0].URL[0],
+                  'subtitle':results[startNum].ItemAttributes[0].Title[0],
                   'buttons':[
                       {
                         'type':'web_url',
                         'title':'Buy',
-                        'url': results[0].DetailPageURL[0]
+                        'url': results[startNum].DetailPageURL[0]
                       }
                   ]
               },
               {
                   'title': kw,
-                  'image_url':results[1].LargeImage[0].URL[0],
-                  'subtitle':results[1].ItemAttributes[0].Title[0],
+                  'image_url':results[startNum+1].LargeImage[0].URL[0],
+                  'subtitle':results[startNum+1].ItemAttributes[0].Title[0],
                   'buttons':[
                       {
                         'type':'web_url',
                         'title':'Buy',
-                        'url': results[1].DetailPageURL[0]
+                        'url': results[startNum+1].DetailPageURL[0]
                       }
                   ]
               },
               {
                   'title': kw,
-                  'image_url':results[2].LargeImage[0].URL[0],
-                  'subtitle':results[2].ItemAttributes[0].Title[0],
+                  'image_url':results[startNum+2].LargeImage[0].URL[0],
+                  'subtitle':results[startNum+2].ItemAttributes[0].Title[0],
                   'buttons':[
                       {
                         'type':'web_url',
                         'title':'Buy',
-                        'url': results[2].DetailPageURL[0]
+                        'url': results[startNum+2].DetailPageURL[0]
                       }
                   ]
               },
               {
                   'title': kw,
-                  'image_url':results[3].LargeImage[0].URL[0],
-                  'subtitle':results[3].ItemAttributes[0].Title[0],
+                  'image_url':results[startNum+3].LargeImage[0].URL[0],
+                  'subtitle':results[startNum+3].ItemAttributes[0].Title[0],
                   'buttons':[
                       {
                         'type':'web_url',
                         'title':'Buy',
-                        'url': results[3].DetailPageURL[0]
+                        'url': results[startNum+3].DetailPageURL[0]
+                      },
+                      {
+                        "type":"postback",
+                        "title":"More Results",
+                        "payload": payload_decision
                       }
                   ]
               }

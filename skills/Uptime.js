@@ -5,7 +5,7 @@ module.exports = function(skill, info, bot, message) {
     var uptime = formatUptime(process.uptime());
 
     bot.reply(message,
-        ':robot_face: I am a bot named <@' + bot.identity.name +
+        ':robot_face: I am a bot named <@' + 'Ubought' +
         '>. I have been running for ' + uptime + ' on ' + hostname + '. I\'m about two ticks away from becoming self-aware; Do not piss me off!');
 
 function formatUptime(uptime) {
