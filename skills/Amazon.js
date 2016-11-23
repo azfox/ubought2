@@ -200,7 +200,7 @@ function send4AmazonResults2(bot,message,results,kw, startNum) {
           'elements':[
               {
                   'title': kw,
-                  'image_url':results[startNum].LargeImage[0].URL[0],
+                  'image_url':results[startNum].MediumImage[0].URL[0],
                   'subtitle':results[startNum].ItemAttributes[0].Title[0],
                   'buttons':[
                       {
@@ -212,7 +212,7 @@ function send4AmazonResults2(bot,message,results,kw, startNum) {
               },
               {
                   'title': kw,
-                  'image_url':results[startNum+1].LargeImage[0].URL[0],
+                  'image_url':results[startNum+1].MediumImage[0].URL[0],
                   'subtitle':results[startNum+1].ItemAttributes[0].Title[0],
                   'buttons':[
                       {
@@ -224,7 +224,7 @@ function send4AmazonResults2(bot,message,results,kw, startNum) {
               },
               {
                   'title': kw,
-                  'image_url':results[startNum+2].LargeImage[0].URL[0],
+                  'image_url':results[startNum+2].MediumImage[0].URL[0],
                   'subtitle':results[startNum+2].ItemAttributes[0].Title[0],
                   'buttons':[
                       {
@@ -236,7 +236,7 @@ function send4AmazonResults2(bot,message,results,kw, startNum) {
               },
               {
                   'title': kw,
-                  'image_url':results[startNum+3].LargeImage[0].URL[0],
+                  'image_url':results[startNum+3].MediumImage[0].URL[0],
                   'subtitle':results[startNum+3].ItemAttributes[0].Title[0],
                   'buttons':[
                       {
