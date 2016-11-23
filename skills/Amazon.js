@@ -1,4 +1,10 @@
 module.exports = function(skill, info, bot, message) {
+
+
+if(message.text == 'I only Load 8.  Sorry You didn\'t  find what you were looking for'){
+  bot.reply(message, message.text)
+}
+
 var request = require("request")
 
 var amazon = require("amazon-product-api")
