@@ -50,46 +50,46 @@ function send4BingResults(bot,message,kw, bingBody) {
           'template_type':'generic',
           'elements':[
               {
-                  'title': bingBody.Webpages.value[0].name,
-                  'subtitle':bingBody.Webpages.value[0].snippet,
+                  'title': bingBody.webPages.value[0].name,
+                  'subtitle':bingBody.webPages.value[0].snippet,
                   'buttons':[
                       {
                         'type':'web_url',
                         'title':'Go To Link',
-                        'url': bingBody.Webpages.value[0].url
+                        'url': bingBody.webPages.value[0].url
                       }
                   ]
               },
               {
-                  'title': bingBody.Webpages.value[1].name,
-                  'subtitle':bingBody.Webpages.value[1].snippet,
+                  'title': bingBody.webPages.value[1].name,
+                  'subtitle':bingBody.webPages.value[1].snippet,
                   'buttons':[
                       {
                         'type':'web_url',
                         'title':'Go To Link',
-                        'url': bingBody.Webpages.value[1].url
+                        'url': bingBody.webPages.value[1].url
                       }
                   ]
               },
               {
-                  'title': bingBody.Webpages.value[2].name,
-                  'subtitle':bingBody.Webpages.value[2].snippet,
+                  'title': bingBody.webPages.value[2].name,
+                  'subtitle':bingBody.webPages.value[2].snippet,
                   'buttons':[
                       {
                         'type':'web_url',
                         'title':'Go To Link',
-                        'url': bingBody.Webpages.value[2].url
+                        'url': bingBody.webPages.value[2].url
                       }
                   ]
               },
               {
-                  'title': bingBody.Webpages.value[3].name,
-                  'subtitle':bingBody.Webpages.value[3].snippet,
+                  'title': bingBody.webPages.value[3].name,
+                  'subtitle':bingBody.webPages.value[3].snippet,
                   'buttons':[
                       {
                         'type':'web_url',
                         'title':'Go To Link',
-                        'url': bingBody.Webpages.value[3].url
+                        'url': bingBody.webPages.value[3].url
                       }
                   ]
               }
