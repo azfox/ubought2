@@ -58,7 +58,12 @@ geocoder.geocode(location, function ( err, data ) {
         return;
       }
       //console.dir(weather);
-      bot.reply(message, 'Current Weather in ' + location
+
+      //Take first word if multiple words
+      var retLocation = toTitleCase(location.match(/^(\S+)\s(.*)/).slice(1))
+
+
+      bot.reply(message, 'Current Weather in ' + retLocation
                         + ': Summary: ' + weather.currently.summary + '\n' +
                          'Temp: ' + weather.currently.temperature + ' Degrees F\n' +
                          'Chance Of Rain: ' +  weather.currently.precipProbability*100 + '%' )
@@ -71,3 +76,9 @@ geocoder.geocode(location, function ( err, data ) {
 
 
 };
+
+
+function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
