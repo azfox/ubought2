@@ -38,8 +38,7 @@ var client = amazon.createClient({
 client.itemSearch({
   keywords: kw,
   availability: 'Available',
-  responseGroup: 'Images,Small,OfferSummary',
-  sort: 'salesrank'
+  responseGroup: 'Images,Small,OfferSummary'
 }, function(err, results, response) {
   if (err) {
     console.log(err);
