@@ -3,7 +3,7 @@ var request = require("request")
 
 var amazon = require("amazon-product-api")
 
-var idx = message.text.indexof('4 more results')
+var idx = message.text.indexOf('4 more results')
 var sNum = 0
 
 if (idx == -1){
