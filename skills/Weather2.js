@@ -33,10 +33,17 @@ try {
   location = message.intents[0].entities.location[0].value
 }
 catch(err) {
-  console.log(message.intents[0].entities.location[0].value)
+  //console.log(message.intents[0].entities.location[0].value)
+
+  if(message.intents[0].entities["search_query"][0].value){
+    location = message.intents[0].entities["search_query"][0].value
+  }else{
+    bot.reply(message, "Oh Man.  I would love to tell you the Weather but you never told me where...the world is vastly different you know!!")
+    return;
+  }
+
   //console.log(message.intents.entities[0])
-  bot.reply(message, "Oh Man.  I would love to tell you the Weather but you never told me where...the world is vastly different you know!!")
-  return;
+
 }
 
 geocoder.geocode(location, function ( err, data ) {
