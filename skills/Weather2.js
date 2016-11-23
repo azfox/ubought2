@@ -35,7 +35,8 @@ try {
 catch(err) {
   //console.log(message.intents[0].entities.location[0].value)
 
-  if(message.intents[0].entities["search_query"][0].value){
+  if(message.intents[0].entities["search_query"][0].value && message.intents[0].entities["search_query"][0].value != null
+      && message.intents[0].entities["search_query"][0].value != ''){
     location = message.intents[0].entities["search_query"][0].value
   }else{
     bot.reply(message, "Oh Man.  I would love to tell you the Weather but you never told me where...the world is vastly different you know!!")
