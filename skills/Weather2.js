@@ -78,7 +78,7 @@ geocoder.geocode(location, function ( err, data ) {
                            'Chance Of Rain: ' +  weather.currently.precipProbability*100 + '%' )
 
       });
-    } catch{
+    } catch(err) {
       bot.reply(message, "Uh Oh, it didn\'t quite understand the location you suggested for the Weather. Care to try again?")
     }
 
