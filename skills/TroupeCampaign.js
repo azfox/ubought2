@@ -2,7 +2,7 @@ module.exports = function(skill, info, bot, message) {
 
 var img = "http://www.troupejewelry.com/media/catalog/product/3/0/3045_3026_8_paired.png"
 var troupe_url = "http://www.troupejewelry.com/arrowsinitial/"
-var uTube = "https://youtu.be/YduPatFwveE"
+var uTube = "http://www.troupejewelry.com/media//video/troupe-hero-video-1.mp4"
 
 var idx = message.text.indexOf('video info')
 var idx2 = message.text.indexOf('this person needs time')
