@@ -123,7 +123,10 @@ controller.hears('(.*)', 'message_received', function (bot, message) {
     //                Likley using WIT.AI story
     //                OR Bing Search cuz its cheeper than Google
     //##############################################################
+    if(!message.is_echo){
       myBrain.invoke('nonSpecificSkill', interpretation, bot, message);
+    }
+
 
   }
 });
