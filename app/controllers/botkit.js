@@ -139,7 +139,7 @@ var handler = function (obj) {
         //console.log("Entire message -->")
         //console.log(obj.entry[e])
 
-        console.log(facebook_message.attachments[0])
+        console.log(facebook_message.attachments)
         //var location = geoip.lookup(ip)
         //console.log("IP Based Location is: " + location.city + ", " + location.region)
 
