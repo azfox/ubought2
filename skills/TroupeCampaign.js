@@ -80,7 +80,7 @@ function sendTroupeVideo(bot,message,img_url, campaign_url, uTube) {
       attachment: attachment,
   });
 
-  setTimeout(sendTroupeCharm2(bot,message, img_url, campaign_url),5000);
+  setTimeout(sendTroupeCharm2(bot,message, img_url, campaign_url),20000);
 }
 
 function sendTroupeCharm2(bot,message,img_url, campaign_url) {
