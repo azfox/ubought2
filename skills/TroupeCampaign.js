@@ -66,6 +66,8 @@ function sendTroupeCharm1(bot,message,img_url, campaign_url) {
 
 function sendTroupeVideo(bot,message,img_url, campaign_url, uTube) {
 
+  console.log("youtube: " + uTube)
+
   var attachment = {
       'type':'video',
       'payload':{
