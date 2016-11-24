@@ -94,7 +94,7 @@ controller.hears(['TRAINING TIME'], 'message_received', function (bot, message) 
 })
 
 
-console.log(wit.hears)
+
 // user says anything else
 controller.hears('(.*)', 'message_received', function (bot, message) {
   //console.log('message to work with: ' + message)
@@ -139,7 +139,12 @@ var handler = function (obj) {
         //console.log("Entire message -->")
         //console.log(obj.entry[e])
         console.log('most recent message')
-        console.log(facebook_message.message.attachments[0])
+        try{
+          console.log(facebook_message.message.attachments[0])
+        } catch (err){
+          console.log(facebook_message.message)
+        }
+
         //var location = geoip.lookup(ip)
         //console.log("IP Based Location is: " + location.city + ", " + location.region)
 
