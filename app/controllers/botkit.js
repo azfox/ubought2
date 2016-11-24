@@ -124,7 +124,8 @@ controller.hears('(.*)', 'message_received', function (bot, message) {
     //                Likley using WIT.AI story
     //                OR Bing Search cuz its cheeper than Google
     //##############################################################
-    if(!message.is_echo){
+    //app user name..
+    if(message.user != 409749346079522){
       myBrain.invoke('nonSpecificSkill', interpretation, bot, message);
     }
 
