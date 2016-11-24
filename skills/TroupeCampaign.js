@@ -9,7 +9,7 @@ var idx2 = message.text.indexOf('this person needs time')
 
 if (idx != -1){
   bot.reply(message, "Sick, Glad you are interested...Check out this video-gasm")
-  sendTroupeVideo(bot, message, img, troupe_url, uTube)
+  //sendTroupeVideo(bot, message, img, troupe_url, uTube)
 }else if(idx2 != -1){
   bot.reply(message, "Dope, Dope, I will remind about this later. But be warned, this exclusive is going fast!!")
 }
