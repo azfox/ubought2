@@ -94,7 +94,7 @@ controller.hears(['TRAINING TIME'], 'message_received', function (bot, message) 
 })
 
 
-
+console.log(wit.hears)
 // user says anything else
 controller.hears('(.*)', 'message_received', function (bot, message) {
   //console.log('message to work with: ' + message)
