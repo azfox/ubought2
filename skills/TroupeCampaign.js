@@ -39,9 +39,9 @@ function sendTroupeCharm1(bot,message,img_url, campaign_url) {
           'template_type':'generic',
           'elements':[
               {
-                  //'title': "My Troupe Campaign",
+                  'title': "My Troupe Campaign",
                   'image_url':img_url,
-                  //'subtitle':"I got the Dopest Charms Around",
+                  'subtitle':"I got the Dopest Charms Around",
                   'buttons':[
                       {
                         'type':'postback',
