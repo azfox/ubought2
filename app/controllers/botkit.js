@@ -138,7 +138,8 @@ var handler = function (obj) {
         var facebook_message = obj.entry[e].messaging[m]
         //console.log("Entire message -->")
         //console.log(obj.entry[e])
-        console.log('most recent message')
+
+        //trying to do audio but it doesnt work
         try{
           console.log(facebook_message.message.attachments[0])
         } catch (err){

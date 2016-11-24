@@ -61,6 +61,16 @@ module.exports = {
     "looking to buy",
     "Amazon audiobooks",
     "Amazon deals for"
+  ],
+
+  "TroupeCampaign": [
+    "Tell me about troupe jewelry",
+    "tell me about torup jewelry",
+    "teach me how to make jewelry",
+    "ill jewelry campaign",
+    "new jewelry charm",
+    "jewelry",
+    "jewelry"
   ]
 
 };
