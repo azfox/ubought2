@@ -2,7 +2,7 @@ module.exports = function(skill, info, bot, message) {
 
 var img = "http://www.troupejewelry.com/media/catalog/product/3/0/3045_3026_8_paired.png"
 var troupe_url = "http://www.troupejewelry.com/arrowsinitial/"
-var uTube = "https://www.youtube.com/watch?v=YduPatFwveE"
+var uTube = "https://youtu.be/YduPatFwveE"
 
 var idx = message.text.indexOf('video info')
 var idx2 = message.text.indexOf('this person needs time')
@@ -39,9 +39,9 @@ function sendTroupeCharm1(bot,message,img_url, campaign_url) {
           'template_type':'generic',
           'elements':[
               {
-                  'title': "My Troupe Campaign",
+                  //'title': "My Troupe Campaign",
                   'image_url':img_url,
-                  'subtitle':"I got the Dopest Charms Around",
+                  //'subtitle':"I got the Dopest Charms Around",
                   'buttons':[
                       {
                         'type':'postback',
@@ -50,7 +50,7 @@ function sendTroupeCharm1(bot,message,img_url, campaign_url) {
                       },
                       {
                         'type':'web_url',
-                        'title':'Fuck Learning, I to own this now',
+                        'title':'I need to own this!',
                         'url': campaign_url
                       }
                   ]
@@ -78,7 +78,7 @@ function sendTroupeVideo(bot,message,img_url, campaign_url, uTube) {
       attachment: attachment,
   });
 
-  sendTroupeCharm2(bot,message, img_url, campaign_url)
+  setTimeout(sendTroupeCharm2(bot,message, img_url, campaign_url),5000);
 }
 
 function sendTroupeCharm2(bot,message,img_url, campaign_url) {
