@@ -97,8 +97,7 @@ controller.hears(['TRAINING TIME'], 'message_received', function (bot, message) 
 
 // user says anything else
 controller.hears('(.*)', 'message_received', function (bot, message) {
-  //console.log('message to work with: ' + message)
-  //bot.reply(message, 'you said ' + message.match[1])
+
   console.log(message)
   console.log('message intents--> ' + message.intents)
   var interpretation = myBrain.interpret(message.text);
@@ -109,15 +108,6 @@ controller.hears('(.*)', 'message_received', function (bot, message) {
     myBrain.invoke(interpretation.guess, interpretation, bot, message);
   } else {
 
-    //bot.reply(message, '...Hmm... I don\'t have a response what you said... I\'ll save it and try to learn about it later.');
-    // speech.reply(message, '```\n' + JSON.stringify(interpretation) + '\n```');
-
-    // append.write [message.text] ---> to a file
-    /*
-    fs.appendFile('phrase-errors.txt', '\nChannel: ' + message.channel + ' User:'+ message.user + ' - ' + message.text, function (err) {
-      console.log('\n\tBrain Err: Appending phrase for review\n\t\t' + message.text + '\n');
-      });
-    */
 
     //#############################################################
     //                HANDLE NON-SPECIFIC SKILLS
