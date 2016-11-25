@@ -70,7 +70,8 @@ module.exports = {
     "ill jewelry campaign",
     "new jewelry charm",
     "jewelry",
-    "jewelry"
+    "jewelry",
+    "troupe jewelry"
   ]
 
 };

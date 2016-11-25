@@ -80,7 +80,7 @@ function sendTroupeVideo(bot,message,img_url, campaign_url, uTube) {
 
 
   bot.reply(message,{
-    attachments: attachment,
+    attachment: attachment,
   })
 
   //sendTroupeCharm2(bot,message, img_url, campaign_url);
