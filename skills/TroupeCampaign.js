@@ -82,6 +82,7 @@ function sendTroupeVideo(bot,message,img_url, campaign_url, uTube) {
             'title':'Cool I am Super Interested',
             'payload': payload_decision
           }
+        ]
 
   };
 
