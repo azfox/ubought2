@@ -79,13 +79,15 @@ function sendTroupeVideo(bot,message,img_url, campaign_url, uTube) {
   };
 
 
-  bot.reply(message, {
-      attachment: attachment,
+  bot.reply(message,{
+    attachments: attachment,
+  },function(err,resp) {
+    console.log("video sent")
+
+    sendTroupeCharm2(bot,message, img_url, campaign_url);
   });
 
-  console.log("video sent")
 
-  sendTroupeCharm2(bot,message, img_url, campaign_url);
 }
 
 function sendTroupeCharm2(bot,message,img_url, campaign_url) {
