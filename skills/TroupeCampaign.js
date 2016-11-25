@@ -69,18 +69,25 @@ function sendTroupeCharm1(bot,message,img_url, campaign_url) {
 
 function sendTroupeVideo(bot,message,img_url, campaign_url, uTube) {
 
+  var payload_decision = message.text + " shit this is cool"
 
-
-  var attachment = {
+  var vid = {
       'type':'video',
       'payload':{
           "url": uTube
-      }
+      },
+      'buttons':[
+          {
+            'type':'postback',
+            'title':'Cool I am Super Interested',
+            'payload': payload_decision
+          }
+
   };
 
 
   bot.reply(message,{
-    attachment: attachment,
+    attachment: vid,
   })
 
   //sendTroupeCharm2(bot,message, img_url, campaign_url);
