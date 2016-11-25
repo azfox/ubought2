@@ -16,9 +16,12 @@ if (idx != -1){
 else {
   //console.log(message)
 
-  bot.reply(message,"yooooooooooo dude check it out! My illest new creation from #TroupeJewelry...You DO NOT want to miss this")
+  //bot.reply(message,"yooooooooooo dude check it out! My illest new creation from #TroupeJewelry...You DO NOT want to miss this")
 
-  sendTroupeCharm1(bot, message, img, troupe_url)
+  //sendTroupeCharm1(bot, message, img, troupe_url)
+
+  sendTroupeVideo(bot, message, img, troupe_url, uTube)
+
 }
 
 
@@ -66,7 +69,7 @@ function sendTroupeCharm1(bot,message,img_url, campaign_url) {
 
 function sendTroupeVideo(bot,message,img_url, campaign_url, uTube) {
 
-  console.log("youtube: " + uTube)
+
 
   var attachment = {
       'type':'video',
@@ -80,7 +83,9 @@ function sendTroupeVideo(bot,message,img_url, campaign_url, uTube) {
       attachment: attachment,
   });
 
-  setTimeout(sendTroupeCharm2(bot,message, img_url, campaign_url),20000);
+  console.log("video sent")
+
+  sendTroupeCharm2(bot,message, img_url, campaign_url);
 }
 
 function sendTroupeCharm2(bot,message,img_url, campaign_url) {
