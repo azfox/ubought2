@@ -80,7 +80,7 @@ function sendTroupeVideo(bot,message,img_url, campaign_url, uTube, video_message
       },
   };
   */
-  var vid {
+  var vid = {
   "type":"template",
   "payload":{
     "template_type":"button",
