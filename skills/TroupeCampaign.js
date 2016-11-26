@@ -23,7 +23,7 @@ else {
 
   //bot.reply(message,"yooooooooooo dude check it out! My illest new creation from #TroupeJewelry...You DO NOT want to miss this")
 
-  sendTroupeCharm2(bot, message, img, troupe_url, uTube)
+  sendTroupeCharm2(bot, message, img, troupe_url)
 
   //sendTroupeVideo(bot, message, img, troupe_url, uTube)
 
@@ -32,7 +32,7 @@ else {
 
 };
 
-function sendTroupeCharm2(bot,message,img_url, campaign_url) {
+function sendTroupeCharm1(bot,message,img_url, campaign_url) {
 
 
   var payload_decision = message.text + ' video info'
