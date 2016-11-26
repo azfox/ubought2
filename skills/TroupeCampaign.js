@@ -9,19 +9,23 @@ var idx2 = message.text.indexOf('this person needs time')
 
 if (idx != -1){
 
-  bot.reply(message, "Sick, Glad you are interested...Check out this video-gasm")
-  sendTroupeVideo(bot, message, img, troupe_url, uTube)
+  //bot.reply(message, "Sick, Glad you are interested...Check out this video-gasm")
+  var video_message = "Sick, Glad you are interested...Check out this video-gasm"
+  sendTroupeVideo(bot, message, img, troupe_url, uTube,video_message)
 }else if(idx2 != -1){
   bot.reply(message, "Dope, Dope, I will remind about this later. But be warned, this exclusive is going fast!!")
+  bot.reply(message, "Any time you have more questions just chat back @ me")
+  //function to remind you later
+  return
 }
 else {
   //console.log(message)
 
-  //bot.reply(message,"yooooooooooo dude check it out! My illest new creation from #TroupeJewelry...You DO NOT want to miss this")
+  bot.reply(message,"yooooooooooo dude check it out! My illest new creation from #TroupeJewelry...You DO NOT want to miss this")
 
-  //sendTroupeCharm1(bot, message, img, troupe_url, uTube)
+  sendTroupeCharm1(bot, message, img, troupe_url, uTube)
 
-  sendTroupeVideo(bot, message, img, troupe_url, uTube)
+  //sendTroupeVideo(bot, message, img, troupe_url, uTube)
 
 }
 
@@ -45,9 +49,9 @@ function sendTroupeCharm1(bot,message,img_url, campaign_url, uTube) {
                   'subtitle':"I got the Dopest Charms Around",
                   'buttons':[
                       {
-                        'type':'web_url',
+                        'type':'postback',
                         'title':'++ Info About this',
-                        'payload': uTube
+                        'url': payload_decision
                       },
                       {
                         'type':'web_url',
@@ -65,17 +69,41 @@ function sendTroupeCharm1(bot,message,img_url, campaign_url, uTube) {
   });
 }
 
-function sendTroupeVideo(bot,message,img_url, campaign_url, uTube) {
+function sendTroupeVideo(bot,message,img_url, campaign_url, uTube, video_message) {
 
-  var payload_decision = message.text + " shit this is cool"
-
+  var payload_decision = message.text + " this person needs time"
+  /*
   var vid = {
       'type':'video',
       'payload':{
           "url": uTube
       },
   };
-
+  */
+  var vid {
+  "type":"template",
+  "payload":{
+    "template_type":"button",
+    "text":video_message,
+    "buttons":[
+      {
+        "type":"web_url",
+        "url":uTube,
+        "title":"Show Me the Vid"
+      },
+      {
+        "type":"postback",
+        "title":"Interested; Need Time",
+        "payload": payload_decision
+      },
+      {
+        "type":"web_url",
+        "title":"Ready to Buy",
+        "url": campaign_url
+      }
+    ]
+  }
+}
 
   bot.reply(message,{
     attachment: vid,
