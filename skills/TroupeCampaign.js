@@ -32,13 +32,13 @@ else {
 
 };
 
-function sendTroupeCharm1(bot,message,img_url, campaign_url, uTube) {
+function sendTroupeCharm2(bot,message,img_url, campaign_url) {
 
 
   var payload_decision = message.text + ' video info'
 
 
-  var attachment = {
+  var attachments = {
       'type':'template',
       'payload':{
           'template_type':'generic',
@@ -65,7 +65,7 @@ function sendTroupeCharm1(bot,message,img_url, campaign_url, uTube) {
   };
 
   bot.reply(message, {
-      attachment: attachment,
+      attachment: attachments,
   });
 }
 
