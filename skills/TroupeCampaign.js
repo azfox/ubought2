@@ -21,9 +21,9 @@ if (idx != -1){
 else {
   //console.log(message)
 
-  //bot.reply(message,"yooooooooooo dude check it out! My illest new creation from #TroupeJewelry...You DO NOT want to miss this")
+  bot.reply(message,"yooooooooooo dude check it out! My illest new creation from #TroupeJewelry...You DO NOT want to miss this")
 
-  sendTroupeCharm2(bot, message, img, troupe_url)
+  sendTroupeCharm1(bot, message, img, troupe_url)
 
   //sendTroupeVideo(bot, message, img, troupe_url, uTube)
 
@@ -46,12 +46,12 @@ function sendTroupeCharm1(bot,message,img_url, campaign_url) {
               {
                   'title': "My Troupe Campaign",
                   'image_url':img_url,
-                  'subtitle':"I got the Dopest Charms Around",
+                  //'subtitle':"I got the Dopest Charms Around",
                   'buttons':[
                       {
                         'type':'postback',
                         'title':'More Info About this',
-                        'url': payload_decision
+                        'payload': payload_decision
                       },
                       {
                         'type':'web_url',
