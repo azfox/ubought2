@@ -29,7 +29,7 @@ console.log('Finished Express..requiring App')
 
 // routes
 require('./app/routes/routes')(app)
-require('./skills/TroupeCampaign')
+require('./skills/TroupeCampaign2')
 
 
 // port for Heroku
