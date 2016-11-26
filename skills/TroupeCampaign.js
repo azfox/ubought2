@@ -110,7 +110,7 @@ function sendTroupeVideo(bot,message,img_url, campaign_url, uTube, video_message
         },
         {
           "type":"postback",
-          "title":"Interested; Need Time",
+          "title":"I'll think on it",
           "payload": payload_decision
         },
         {
