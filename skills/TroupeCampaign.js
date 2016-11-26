@@ -7,7 +7,7 @@ var uTube = "http://www.troupejewelry.com/media//video/troupe-hero-video-1.mp4"
 var idx = message.text.indexOf('video info')
 var idx2 = message.text.indexOf('this person needs time')
 
-if (idx != -1){
+if (idx != -1 && idx2 != -1){
 
   //bot.reply(message, "Sick, Glad you are interested...Check out this video-gasm")
   var video_message = "Sick, Glad you are interested...Check out this video-gasm"
