@@ -21,7 +21,7 @@ if (idx != -1){
 else {
   //console.log(message)
 
-  bot.reply(message,"yooooooooooo dude check it out! My illest new creation from #TroupeJewelry...You DO NOT want to miss this")
+  //bot.reply(message,"yooooooooooo dude check it out! My illest new creation from #TroupeJewelry...You DO NOT want to miss this")
 
   sendTroupeCharm1(bot, message, img, troupe_url, uTube)
 
