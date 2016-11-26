@@ -59,7 +59,7 @@ function sendTroupeCharm1(bot,message,img_url, campaign_url, uTub, init_message)
       }
   };
 
-  bot.startConversation(message,function(err,convo)){
+  bot.startConversation(message,function(err,convo){
     var msg = createInitMessage(init_message);
     convo.ask(msg,[
       {
@@ -83,7 +83,7 @@ function sendTroupeCharm1(bot,message,img_url, campaign_url, uTub, init_message)
 
 
     ]);
-  }
+  })
 }
 
 function sendTroupeVideo(bot,message,img_url, campaign_url, uTube, video_message) {
