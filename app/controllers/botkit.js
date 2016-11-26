@@ -98,28 +98,28 @@ controller.hears(['TRAINING TIME'], 'message_received', function (bot, message) 
 // user says anything else
 controller.hears('(.*)', 'message_received', function (bot, message) {
 
+  if(message.user != 409749346079522){
+    console.log(message)
+    console.log('message intents--> ' + message.intents)
+    var interpretation = myBrain.interpret(message.text);
+    console.log('uBought heard: ' + message.text);
+    console.log('uBought interpretation: ', interpretation);
+    if (interpretation.guess) {
+      console.log('Invoking skill: ' + interpretation.guess);
+      myBrain.invoke(interpretation.guess, interpretation, bot, message);
+    } else {
 
-  console.log(message)
-  console.log('message intents--> ' + message.intents)
-  var interpretation = myBrain.interpret(message.text);
-  console.log('uBought heard: ' + message.text);
-  console.log('uBought interpretation: ', interpretation);
-  if (interpretation.guess) {
-    console.log('Invoking skill: ' + interpretation.guess);
-    myBrain.invoke(interpretation.guess, interpretation, bot, message);
-  } else {
 
-
-    //#############################################################
-    //                HANDLE NON-SPECIFIC SKILLS
-    //                Likley using WIT.AI story
-    //                OR Bing Search cuz its cheeper than Google
-    //##############################################################
-    //app user name..
-    if(message.user != 409749346079522){
-      myBrain.invoke('nonSpecificSkill', interpretation, bot, message);
-    }
-
+      //#############################################################
+      //                HANDLE NON-SPECIFIC SKILLS
+      //                Likley using WIT.AI story
+      //                OR Bing Search cuz its cheeper than Google
+      //##############################################################
+      //app user name..
+      if(message.user != 409749346079522){
+        myBrain.invoke('nonSpecificSkill', interpretation, bot, message);
+      }
+  }
 
   }
 });
