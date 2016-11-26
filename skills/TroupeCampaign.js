@@ -50,7 +50,7 @@ function sendTroupeCharm1(bot,message,img_url, campaign_url, uTube) {
                   'buttons':[
                       {
                         'type':'postback',
-                        'title':'++ Info About this',
+                        'title':'More Info About this',
                         'url': payload_decision
                       },
                       {
@@ -81,29 +81,29 @@ function sendTroupeVideo(bot,message,img_url, campaign_url, uTube, video_message
   };
   */
   var vid = {
-  "type":"template",
-  "payload":{
-    "template_type":"button",
-    "text":video_message,
-    "buttons":[
-      {
-        "type":"web_url",
-        "url":uTube,
-        "title":"Show Me the Vid"
-      },
-      {
-        "type":"postback",
-        "title":"Interested; Need Time",
-        "payload": payload_decision
-      },
-      {
-        "type":"web_url",
-        "title":"Ready to Buy",
-        "url": campaign_url
-      }
-    ]
+    "type":"template",
+    "payload":{
+      "template_type":"button",
+      "text":video_message,
+      "buttons":[
+        {
+          "type":"web_url",
+          "url":uTube,
+          "title":"Show Me the Vid"
+        },
+        {
+          "type":"postback",
+          "title":"Interested; Need Time",
+          "payload": payload_decision
+        },
+        {
+          "type":"web_url",
+          "title":"Ready to Buy",
+          "url": campaign_url
+        }
+      ]
+    }
   }
-}
 
   bot.reply(message,{
     attachment: vid,
