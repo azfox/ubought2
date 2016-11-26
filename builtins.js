@@ -63,7 +63,7 @@ module.exports = {
     "Amazon deals for"
   ],
 
-  "TroupeCampaign2": [
+  "TroupeCampaign": [
     "Tell me about troupe jewelry",
     "tell me about torup jewelry",
     "teach me how to make jewelry",

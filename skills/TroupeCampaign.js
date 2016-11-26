@@ -21,13 +21,18 @@ if (idx != -1 && idx2 == -1){
 else {
   //console.log(message)
 
-  bot.reply(message,"yooooooooooo dude check it out! My illest new creation from #TroupeJewelry...You DO NOT want to miss this")
-  var time = 2000
-  var stop = new Date().getTime();
-  while(new Date().getTime() < stop + time) {
-      ;
-  }
-  sendTroupeCharm1(bot, message, img, troupe_url)
+  bot.reply(message,"yooooooooooo dude check it out! My illest new creation from #TroupeJewelry...You DO NOT want to miss this",
+  function(err,response) {
+
+    var time = 2000
+    var stop = new Date().getTime();
+    while(new Date().getTime() < stop + time) {
+        ;
+    }
+    sendTroupeCharm1(bot, message, img, troupe_url)
+
+  })
+
 
   //sendTroupeVideo(bot, message, img, troupe_url, uTube)
 
