@@ -23,7 +23,7 @@ else {
 
   //bot.reply(message,"yooooooooooo dude check it out! My illest new creation from #TroupeJewelry...You DO NOT want to miss this")
 
-  sendTroupeCharm1(bot, message, img, troupe_url, uTube)
+  sendTroupeCharm2(bot, message, img, troupe_url, uTube)
 
   //sendTroupeVideo(bot, message, img, troupe_url, uTube)
 
