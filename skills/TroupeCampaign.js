@@ -13,8 +13,16 @@ if (idx != -1 && idx2 == -1){
   var video_message = "Sick, Glad you are interested...Check out this video-gasm"
   sendTroupeVideo(bot, message, img, troupe_url, uTube,video_message)
 }else if(idx2 != -1){
-  bot.reply(message, "Dope, Dope, I will remind about this later. But be warned, this exclusive is going fast!!")
-  bot.reply(message, "Any time you have more questions just chat back @ me")
+  bot.reply(message, "Dope, Dope, I will remind about this later. But be warned, this exclusive is going fast!!",
+  function(err, response){
+    var time = 2000
+    var stop = new Date().getTime();
+    while(new Date().getTime() < stop + time) {
+        ;
+    }
+    bot.reply(message, "Any time you have more questions just chat back @ me")
+  })
+
   //function to remind you later
   return
 }
