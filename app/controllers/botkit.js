@@ -98,9 +98,8 @@ controller.hears(['TRAINING TIME'], 'message_received', function (bot, message) 
 // user says anything else
 controller.hears('(.*)', 'message_received', function (bot, message) {
 
-  console.log("message below")
+
   console.log(message)
-  console.log("message above")
   console.log('message intents--> ' + message.intents)
   var interpretation = myBrain.interpret(message.text);
   console.log('uBought heard: ' + message.text);
