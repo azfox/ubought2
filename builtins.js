@@ -72,6 +72,14 @@ module.exports = {
     "jewelry",
     "jewelry",
     "troupe jewelry"
+  ],
+
+  "Mortgage": [
+    "I am looking for a new Mortgage",
+    "I want to refinance my house",
+    "Looking for a home loan",
+    "I put an offer on a house",
+    "Home financing"
   ]
 
 };

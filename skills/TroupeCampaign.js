@@ -54,7 +54,7 @@ function sendTroupeCharm1(bot,message,img_url, campaign_url) {
 
   var payload_decision = message.text + ' video info'
 
-
+  //image url aspect ratio should be: 1.91:1
   var attachments = {
       'type':'template',
       'payload':{
