@@ -1,6 +1,7 @@
 module.exports = function(skill, info, bot, message) {
 
   bot.createConversation(message, function(err, convo) {
+      //todo make the yes thread into convo.addQuestion
 
       // create a path for when a user says YES
       convo.addMessage({
@@ -29,7 +30,7 @@ module.exports = function(skill, info, bot, message) {
 
 
 function init_question(question, convo){
-    var vid = {
+    var inital = {
       "type":"template",
       "payload":{
         "template_type":"button",
@@ -50,7 +51,7 @@ function init_question(question, convo){
     }
     // Create a yes/no question in the default thread...
 
-    convo.ask('So you are looking for a new Mortage huh?', [
+    convo.ask({attachment = inital}, [
         {
             pattern: 'yes',
             callback: function(response, convo) {
