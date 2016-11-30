@@ -20,7 +20,7 @@ module.exports = function(skill, info, bot, message) {
           action: 'default',
       },'bad_response');
 
-      init_question("So, you are looking for a new Mortage, huh?")
+      init_question("So, you are looking for a new Mortage, huh?", convo)
 
       convo.activate();
   });
