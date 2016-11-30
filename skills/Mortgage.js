@@ -51,7 +51,7 @@ function init_question(question, convo){
     }
     // Create a yes/no question in the default thread...
 
-    convo.ask({attachment = inital}, [
+    convo.ask({attachment: inital}, [
         {
             pattern: 'yes',
             callback: function(response, convo) {
