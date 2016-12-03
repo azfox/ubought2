@@ -98,7 +98,7 @@ function lets_get_started(message, convo){
         }else{
           convo.changeTopic('bad_response')
         }
-      })
+      }, 'yes_thread')
 
 
 }
