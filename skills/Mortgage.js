@@ -1,10 +1,14 @@
+var util = require('../../helpers/MortageHelpers');
+
 module.exports = function(skill, info, bot, message) {
+
+
 
   bot.createConversation(message, function(err, convo) {
       //todo make the yes thread into convo.addQuestion
 
       // create a path for when a user says YES
-      convo.addMessage({
+      convo.addQuestion({
               text: 'Right On! You\'ve come to the right place.  I\'m your man. Lets get started.',
       },'yes_thread');
 
@@ -75,7 +79,26 @@ function init_question(question, convo){
   }
 
 
+function lets_get_started(message, convo,text, lets_get_started){
 
+  var name = util.get_name_from_uid(message.sender)
+
+  convo.addMessage({
+          text: 'Right On! You\'ve come to the right place.  I\'m your man. Lets get started.',
+  },'yes_thread');
+
+  convo.addQuestion(
+    "I have you name as: " + name + ". Is this right?", function(response, convo) {
+        // whoa, I got the postback payload as a response to my convo.ask!
+        if(response == 'yes'){
+          convo.say("Fuck yeah")
+        }esle{
+          convo.changeTopic('bad_response')
+        }
+      })
+
+
+}
 
 
 
