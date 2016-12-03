@@ -1,4 +1,4 @@
-var util = require('../../helpers/MortageHelpers');
+var util = require('../helpers/MortageHelpers');
 
 module.exports = function(skill, info, bot, message) {
 
