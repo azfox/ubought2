@@ -8,9 +8,12 @@ module.exports = function(skill, info, bot, message) {
       //todo make the yes thread into convo.addQuestion
 
       // create a path for when a user says YES
-      convo.addQuestion({
+      /*
+      convo.addMessage({
               text: 'Right On! You\'ve come to the right place.  I\'m your man. Lets get started.',
       },'yes_thread');
+      */
+      lets_get_started(message, convo)
 
       // create a path for when a user says NO
       convo.addMessage({
@@ -79,7 +82,7 @@ function init_question(question, convo){
   }
 
 
-function lets_get_started(message, convo,text, lets_get_started){
+function lets_get_started(message, convo){
 
   var name = util.get_name_from_uid(message.sender)
 
