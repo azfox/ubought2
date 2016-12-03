@@ -92,7 +92,7 @@ function lets_get_started(message, convo,text, lets_get_started){
         // whoa, I got the postback payload as a response to my convo.ask!
         if(response == 'yes'){
           convo.say("Fuck yeah")
-        }esle{
+        }else{
           convo.changeTopic('bad_response')
         }
       })
