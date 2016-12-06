@@ -84,7 +84,7 @@ function init_question(question, convo){
 
 function lets_get_started(message, convo){
 
-  var name = util.get_name_from_uid(message.sender)
+  var name = util.get_name_from_uid(message.user)
 
   convo.addMessage({
           text: 'Right On! You\'ve come to the right place.  I\'m your man. Lets get started.',
