@@ -8,7 +8,7 @@ exports.get_name_from_uid = function(uid){
                        + "?fields=first_name,last_name,profile_pic,locale,timezone,gender&access_token="
                        + process.env.FACEBOOK_PAGE_TOKEN
 
-
+   console.log(graph_api_str)
    request.post(graph_api_str,
      function (err, res, body) {
        if (err) {
