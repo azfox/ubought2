@@ -100,6 +100,8 @@ function lets_get_started(message, convo){
         }
       }, ,'yes_thread')
 
+  console.log("done with lets get started.")
+
 
 }
 
