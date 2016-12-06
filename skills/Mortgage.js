@@ -84,6 +84,10 @@ function init_question(question, convo){
 
 function lets_get_started(message, convo){
 
+  console.log("#############################################")
+  console.log(message)
+  console.log("#############################################")
+
   var name = util.get_name_from_uid(message.user)
 
   convo.addMessage({
