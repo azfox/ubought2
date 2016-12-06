@@ -1,4 +1,7 @@
 exports.get_name_from_uid = function(uid){
+
+  console.log(uid)
+
   var request = require('request')
   var graph_api_str = "https://graph.facebook.com/v2.6/"
                        + uid
