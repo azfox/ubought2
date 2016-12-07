@@ -36,7 +36,7 @@ exports.get_name_from_uid = function(uid){
        }
        else {
          console.log(response)
-         return response.first_name + " " + response.last_name
+         return body.first_name + " " + body.last_name
 
        }
    })
