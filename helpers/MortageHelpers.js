@@ -1,4 +1,4 @@
-exports.get_name_from_uid = function(uid cb){
+exports.get_name_from_uid = function(uid, cb){
 
   console.log(uid)
 
