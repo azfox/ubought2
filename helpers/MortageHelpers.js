@@ -1,4 +1,4 @@
-exports.get_name_from_uid = function(uid){
+exports.get_name_from_uid = function(uid cb){
 
   console.log(uid)
 
@@ -32,13 +32,13 @@ exports.get_name_from_uid = function(uid){
 
        if (error) {
          console.log("Was unable to get the name of the user!!")
-         return "No_Name";
+         cb("No_Name");
        }
        else {
          //console.log(body)
          var name = response.body.first_name + " " + response.body.last_name
          console.log(name)
-         return name;
+         cb(name);
        }
    })
 

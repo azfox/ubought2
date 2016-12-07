@@ -89,24 +89,26 @@ function lets_get_started(message, convo){
   console.log(message.user)
   console.log("#############################################")
 
-  var name = util.get_name_from_uid(message.user)
-  console.log("name is :" + name)
+  util.get_name_from_uid(message.user, function(name){
+    convo.addMessage({
+            text: 'Right On! You\'ve come to the right place.  I\'m your man. Lets get started.',
+    },'yes_thread');
 
-  convo.addMessage({
-          text: 'Right On! You\'ve come to the right place.  I\'m your man. Lets get started.',
-  },'yes_thread');
+    convo.addQuestion(
+      "I have you name as: " + name + ". Is this right?", function(response, convo) {
+          // whoa, I got the postback payload as a response to my convo.ask!
+          if(response == 'yes'){
+            convo.say("Fuck yeah")
+          }else{
+            convo.changeTopic('bad_response')
+          }
+        }, null,'yes_thread')
 
-  convo.addQuestion(
-    "I have you name as: " + name + ". Is this right?", function(response, convo) {
-        // whoa, I got the postback payload as a response to my convo.ask!
-        if(response == 'yes'){
-          convo.say("Fuck yeah")
-        }else{
-          convo.changeTopic('bad_response')
-        }
-      }, null,'yes_thread')
+    console.log("done with lets get started.")
+  })
 
-  console.log("done with lets get started.")
+
+
 
 
 }
