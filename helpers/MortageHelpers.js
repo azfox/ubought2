@@ -42,19 +42,3 @@ exports.get_name_from_uid = function(uid){
    })
 
 }
-
-request({
-    url: graph_api_str,
-    json: true
-}, function (error, response, body) {
-
-    if (error) {
-      console.log("Was unable to get the name of the user!!")
-      return "No_Name"
-    }
-    else {
-      console.log()
-      return res.first_name + " " + res.last_name
-
-    }
-})
