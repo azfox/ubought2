@@ -9,17 +9,52 @@ exports.get_name_from_uid = function(uid){
                        + process.env.FACEBOOK_PAGE_TOKEN
 
    console.log(graph_api_str)
-   request.post(graph_api_str,
+   /*
+   request.get(graph_api_str,
      function (err, res, body) {
        if (err) {
          console.log("Was unable to get the name of the user!!")
          return "No_Name"
        }
        else {
+         console.log()
          return res.first_name + " " + res.last_name
 
        }
      }
    )
+   */
+
+   request({
+       url: graph_api_str,
+       json: true
+   }, function (error, response, body) {
+
+       if (error) {
+         console.log("Was unable to get the name of the user!!")
+         return "No_Name"
+       }
+       else {
+         console.log()
+         return res.first_name + " " + res.last_name
+
+       }
+   })
 
 }
+
+request({
+    url: graph_api_str,
+    json: true
+}, function (error, response, body) {
+
+    if (error) {
+      console.log("Was unable to get the name of the user!!")
+      return "No_Name"
+    }
+    else {
+      console.log()
+      return res.first_name + " " + res.last_name
+
+    }
+})
