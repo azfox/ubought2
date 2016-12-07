@@ -90,6 +90,7 @@ function lets_get_started(message, convo){
   console.log("#############################################")
 
   var name = util.get_name_from_uid(message.user)
+  console.log("name is :" + name)
 
   convo.addMessage({
           text: 'Right On! You\'ve come to the right place.  I\'m your man. Lets get started.',
