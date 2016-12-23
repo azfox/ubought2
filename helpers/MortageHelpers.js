@@ -42,7 +42,7 @@ exports.init_applicant_info = function(){
     Declarations: {}
   };
 
-  return empty_obj;(
+  return empty_obj;
 
 
 }
