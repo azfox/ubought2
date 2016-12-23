@@ -110,6 +110,6 @@ function lets_get_started(message, convo, all_applicant_info){
 }
 
 
-load_all_threads(message, convo, all_applicant_info){
+function load_all_threads(message, convo, all_applicant_info){
   util.create_email_and_phone_thread(message, convo, all_applicant_info)
 }
