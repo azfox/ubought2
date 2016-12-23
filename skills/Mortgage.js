@@ -6,14 +6,12 @@ module.exports = function(skill, info, bot, message) {
 
   bot.createConversation(message, function(err, convo) {
       //todo make the yes thread into convo.addQuestion
+      all_applicant_info = util.init_applicant_info();
 
-      // create a path for when a user says YES
-      /*
-      convo.addMessage({
-              text: 'Right On! You\'ve come to the right place.  I\'m your man. Lets get started.',
-      },'yes_thread');
-      */
-      lets_get_started(message, convo)
+
+      load_all_threads(message, convo, all_applicant_info)
+
+      lets_get_started(message, convo,all_applicant_info)
 
       // create a path for when a user says NO
       convo.addMessage({
@@ -62,7 +60,7 @@ function init_question(question, convo){
         {
             pattern: 'yes',
             callback: function(response, convo) {
-                convo.changeTopic('yes_thread');
+                convo.changeTopic('init_yes_thread');
             },
         },
         {
@@ -82,27 +80,25 @@ function init_question(question, convo){
   }
 
 
-function lets_get_started(message, convo){
-
-  console.log("#############################################")
-  console.log(message)
-  console.log(message.user)
-  console.log("#############################################")
+function lets_get_started(message, convo, all_applicant_info){
 
   util.get_name_from_uid(message.user, function(name){
+
     convo.addMessage({
             text: 'Right On! You\'ve come to the right place.  I\'m your man. Lets get started.',
-    },'yes_thread');
+    },'init_yes_thread');
 
     convo.addQuestion(
       "I have you name as: " + name + ". Is this right?", function(response, convo) {
           // whoa, I got the postback payload as a response to my convo.ask!
           if(response == 'yes'){
-            convo.say("Fuck yeah")
+            all_applicant_info.Borrower.Name = name
+            convo.say("Nice to be working with you " + name + "!")
+            convo.changeTopic("email_grab")
           }else{
-            convo.changeTopic('bad_response')
+            convo.changeTopic('bad_name')
           }
-        }, null,'yes_thread')
+        }, null,'init_yes_thread')
 
     console.log("done with lets get started.")
   })
@@ -114,63 +110,6 @@ function lets_get_started(message, convo){
 }
 
 
-
-/*
-convo.ask({
-            attachment: {
-                'type': 'template',
-                'payload': {
-                    'template_type': 'generic',
-                    'elements': [
-                        {
-                            'title': 'Classic White T-Shirt',
-                            'image_url': 'http://petersapparel.parseapp.com/img/item100-thumb.png',
-                            'subtitle': 'Soft white cotton t-shirt is back in style',
-                            'buttons': [
-                                {
-                                    'type': 'web_url',
-                                    'url': 'https://petersapparel.parseapp.com/view_item?item_id=100',
-                                    'title': 'View Item'
-                                },
-                                {
-                                    'type': 'web_url',
-                                    'url': 'https://petersapparel.parseapp.com/buy_item?item_id=100',
-                                    'title': 'Buy Item'
-                                },
-                                {
-                                    'type': 'postback',
-                                    'title': 'Bookmark Item',
-                                    'payload': 'White T-Shirt'
-                                }
-                            ]
-                        },
-                        {
-                            'title': 'Classic Grey T-Shirt',
-                            'image_url': 'http://petersapparel.parseapp.com/img/item101-thumb.png',
-                            'subtitle': 'Soft gray cotton t-shirt is back in style',
-                            'buttons': [
-                                {
-                                    'type': 'web_url',
-                                    'url': 'https://petersapparel.parseapp.com/view_item?item_id=101',
-                                    'title': 'View Item'
-                                },
-                                {
-                                    'type': 'web_url',
-                                    'url': 'https://petersapparel.parseapp.com/buy_item?item_id=101',
-                                    'title': 'Buy Item'
-                                },
-                                {
-                                    'type': 'postback',
-                                    'title': 'Bookmark Item',
-                                    'payload': 'Grey T-Shirt'
-                                }
-                            ]
-                        }
-                    ]
-                }
-            }
-        }, function(response, convo) {
-            // whoa, I got the postback payload as a response to my convo.ask!
-            convo.next();
-        });
-*/
+load_all_threads(message, convo, all_applicant_info){
+  util.create_email_and_phone_thread(message, convo, all_applicant_info)
+}
