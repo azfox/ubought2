@@ -74,7 +74,7 @@ exports.create_email_and_phone_thread = function(message, convo, all_applicant_i
         // whoa, I got the postback payload as a response to my convo.ask!
         if(response == 'yes'){
           //post_to_simple_form()
-          convo.say("Right now the form does not work. but it will soon.")
+          convo.say("Making sure I am able to change computers")
         }else{
           convo.changeTopic('bad_name')
         }
